@@ -246,4 +246,32 @@
     <string name="device_label_243" formatted="false">Gia tốc tuyến tính</string>
     <string name="device_label_244" formatted="false">Véc-tơ xoay</string>
     <string name="device_label_245" formatted="false">Độ ẩm</string>
+    <string name="device_label_246" formatted="false">Thiết bị và hệ thống</string>
+    <string name="device_label_247" formatted="false">Kiểm tra nhanh</string>
+    <string name="device_label_248" formatted="false">Theo dõi trực tiếp</string>
+    <string name="device_label_249" formatted="false">Thông tin thiết bị</string>
+    <string name="device_label_250" formatted="false">Khám phá thông tin mà thiết bị cung cấp.</string>
+    <string name="device_label_251" formatted="false">Bộ xử lý, đồ họa, màn hình và bộ nhớ</string>
+    <string name="device_label_252" formatted="false">Android, bản dựng và nhận dạng thiết bị</string>
+    <string name="device_label_253" formatted="false">Tình trạng, chu kỳ và sạc pin</string>
+    <string name="device_label_254" formatted="false">Kết nối và cấu hình mạng</string>
+    <string name="device_label_255" formatted="false">Ứng dụng đã cài và quyền truy cập</string>
+    <string name="device_label_256" formatted="false">Thông số camera và xem trước</string>
+    <string name="device_label_257" formatted="false">Số đo trực tiếp và chi tiết cảm biến</string>
+    <string name="device_label_258" formatted="false">Kiểm tra phần cứng</string>
+    <string name="device_label_259" formatted="false">Chạy phép kiểm tra rồi ghi nhận kết quả quan sát.</string>
+    <string name="device_label_260" formatted="false">Màn hình và cảm ứng</string>
+    <string name="device_label_261" formatted="false">Điều khiển và phản hồi</string>
+    <string name="device_label_262" formatted="false">Âm thanh và camera</string>
+    <string name="device_label_263" formatted="false">Kết nối và bảo mật</string>
+    <string name="device_label_264" formatted="false">Xuất hoặc chia sẻ thông tin thiết bị</string>
+    <string name="device_label_265" formatted="false">Giới thiệu</string>
+    <string name="device_label_266" formatted="false">Ứng dụng người dùng</string>
+    <string name="device_label_267" formatted="false">Ứng dụng hệ thống</string>
+    <string name="device_label_268" formatted="false">Tất cả ứng dụng</string>
+    <string name="device_label_269" formatted="false">Truy cập nhanh</string>
+    <string name="device_label_270" formatted="false">Đạt</string>
+    <string name="device_label_271" formatted="false">Lỗi</string>
+    <string name="device_label_272" formatted="false">Chưa kiểm tra</string>
+    <string name="device_label_273" formatted="false">Ghi lại nhận xét sau khi chạy kiểm tra</string>
 </resources>

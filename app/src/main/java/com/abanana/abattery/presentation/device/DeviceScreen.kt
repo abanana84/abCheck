@@ -9,25 +9,26 @@ import android.provider.Settings
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -43,7 +44,6 @@ import com.abanana.abattery.presentation.locale.LanguagePickerDialog
 import com.abanana.abattery.ui.theme.ThemeMode
 import java.util.Date
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.drop
 
 val deviceTabs =
     listOf("Dashboard", "Hardware", "System", "Battery", "Network", "Apps", "Camera", "Sensors")
@@ -66,8 +66,8 @@ fun DeviceScreen(
     val reportSnapshot = snapshot.withBattery(battery).withObservations(LocalContext.current)
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val pageState = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     var page by rememberSaveable { mutableStateOf("Dashboard") }
-    var tab by rememberSaveable { mutableIntStateOf(0) }
     var backStack by rememberSaveable { mutableStateOf(emptyList<String>()) }
     var menu by remember { mutableStateOf(false) }
     var searching by rememberSaveable { mutableStateOf(false) }
@@ -112,29 +112,23 @@ fun DeviceScreen(
                 }
         }
     fun navigate(destination: String) {
-        if (destination == "Dashboard") backStack = emptyList()
-        else if (destination !in deviceTabs && destination != page) backStack = backStack + page
+        if (destination == page) return
+        if (destination == "Dashboard") backStack = emptyList() else backStack = backStack + page
         page = destination
         searching = false
         query = ""
-        if (destination in deviceTabs) tab = deviceTabs.indexOf(destination)
     }
     fun goBack() {
         val destination = backStack.lastOrNull() ?: "Dashboard"
         backStack = backStack.dropLast(1)
         page = destination
-        if (destination in deviceTabs) tab = deviceTabs.indexOf(destination)
     }
-    val pagerState = rememberPagerState(initialPage = tab) { deviceTabs.size }
-    LaunchedEffect(tab) { if (pagerState.currentPage != tab) pagerState.animateScrollToPage(tab) }
-    LaunchedEffect(pagerState) {
-        snapshotFlow { pagerState.settledPage }
-            .drop(1)
-            .collect { index ->
-                if (page in deviceTabs && tab != index) navigate(deviceTabs[index])
-            }
+    BackHandler(page != "Dashboard" || searching) {
+        if (searching) {
+            searching = false
+            query = ""
+        } else goBack()
     }
-    BackHandler(page != "Dashboard") { goBack() }
     LanguagePickerDialog(language) { language = false }
     if (message != null)
         AlertDialog(
@@ -145,37 +139,46 @@ fun DeviceScreen(
         )
     Column(
         Modifier.fillMaxSize()
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
             .background(MaterialTheme.colorScheme.background)
             .navigationBarsPadding()
             .displayCutoutPadding()
     ) {
-        CenterAlignedTopAppBar(
+        TopAppBar(
             title = {
-                DeviceText(
-                    if (page in deviceTabs) "abCheck" else page,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 25.sp,
-                    color = MaterialTheme.colorScheme.primary,
-                )
+                if (page == "Dashboard")
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        IconBadge(Icons.Default.FactCheck, 34.dp)
+                        Column {
+                            DeviceText(
+                                "abCheck",
+                                style = MaterialTheme.typography.titleLarge,
+                                maxLines = 1,
+                            )
+                            DeviceText(
+                                "Device & System",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                else
+                    DeviceText(
+                        page,
+                        style = MaterialTheme.typography.titleLarge,
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                    )
             },
             navigationIcon = {
-                IconButton(
-                    onClick = {
-                        if (page !in deviceTabs) goBack()
-                        else
-                            message =
-                                "abCheck · Device & system information\nLocal diagnostics. Device support varies.\nVersion ${context.packageManager.getPackageInfo(context.packageName, 0).versionName}"
+                if (page != "Dashboard")
+                    IconButton(onClick = ::goBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                     }
-                ) {
-                    Icon(
-                        if (page in deviceTabs) Icons.Default.Info
-                        else Icons.AutoMirrored.Filled.ArrowBack,
-                        "Back or about",
-                        tint = MaterialTheme.colorScheme.primary,
-                    )
-                }
             },
             actions = {
                 if (page in listOf("Hardware", "System", "Network", "Camera", "Apps"))
@@ -185,7 +188,10 @@ fun DeviceScreen(
                             query = ""
                         }
                     ) {
-                        Icon(Icons.Default.Search, "Search information")
+                        Icon(
+                            if (searching) Icons.Default.SearchOff else Icons.Default.Search,
+                            "Search information",
+                        )
                     }
                 IconButton(
                     onClick = {
@@ -198,13 +204,28 @@ fun DeviceScreen(
                         )
                     }
                 ) {
-                    Icon(Icons.Default.Brightness6, "Change theme")
+                    Icon(
+                        when (themeMode) {
+                            ThemeMode.SYSTEM -> Icons.Default.BrightnessAuto
+                            ThemeMode.LIGHT -> Icons.Default.LightMode
+                            ThemeMode.DARK -> Icons.Default.DarkMode
+                        },
+                        "Change theme",
+                    )
                 }
                 Box {
                     IconButton(onClick = { menu = true }) {
                         Icon(Icons.Default.MoreVert, "More options")
                     }
                     DropdownMenu(menu, { menu = false }) {
+                        DropdownMenuItem(
+                            text = { DeviceText("About") },
+                            onClick = {
+                                menu = false
+                                message =
+                                    "abCheck · Device & System\nLocal diagnostics. Device support varies.\nVersion ${context.packageManager.getPackageInfo(context.packageName, 0).versionName}"
+                            },
+                        )
                         DropdownMenuItem(
                             text = { DeviceText("Privacy policy") },
                             onClick = {
@@ -213,7 +234,7 @@ fun DeviceScreen(
                                     Intent(
                                         Intent.ACTION_VIEW,
                                         Uri.parse(
-                                            "https://github.com/abanana84/abattery/blob/main/PRIVACY.md"
+                                            "https://github.com/abanana84/abCheck/blob/main/PRIVACY.md"
                                         ),
                                     )
                                 )
@@ -261,54 +282,53 @@ fun DeviceScreen(
                 }
             },
             colors =
-                TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
+                TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
                 ),
             windowInsets = WindowInsets(0, 0, 0, 0),
         )
-        if (page in deviceTabs)
-            ScrollableTabRow(
-                selectedTabIndex = tab,
-                edgePadding = 0.dp,
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.primary,
-                indicator = { positions ->
-                    androidx.compose.material3.TabRowDefaults.SecondaryIndicator(
-                        Modifier.tabIndicatorOffset(positions[tab]),
-                        height = 3.dp,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                },
-                divider = { HorizontalDivider(thickness = 0.5.dp) },
-            ) {
-                deviceTabs.forEachIndexed { index, name ->
-                    Tab(
-                        selected = tab == index,
-                        onClick = { navigate(name) },
-                        selectedContentColor = MaterialTheme.colorScheme.primary,
-                        unselectedContentColor = MaterialTheme.colorScheme.onSurface,
-                        content = {
-                            Box(
-                                Modifier.height(48.dp).padding(horizontal = 12.dp),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                DeviceText(name, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                            }
-                        },
-                    )
-                }
-            }
+        if (page in deviceTabs && page != "Dashboard") {
+            DeviceCategories(page, ::navigate)
+        }
         if (searching)
-            TextField(
+            OutlinedTextField(
                 value = query,
                 onValueChange = { query = it },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
                 singleLine = true,
+                shape = RoundedCornerShape(50),
                 placeholder = { DeviceText("Search information") },
                 leadingIcon = { Icon(Icons.Default.Search, null) },
+                trailingIcon = {
+                    if (query.isNotEmpty())
+                        IconButton(onClick = { query = "" }) { Icon(Icons.Default.Close, "Close") }
+                },
+                colors =
+                    OutlinedTextFieldDefaults.colors(
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                    ),
             )
         error?.let {
-            DeviceText(it, Modifier.padding(12.dp), color = MaterialTheme.colorScheme.error)
+            Surface(
+                Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
+                shape = RoundedCornerShape(14.dp),
+                color = MaterialTheme.colorScheme.errorContainer,
+            ) {
+                Row(
+                    Modifier.padding(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        Icons.Default.ErrorOutline,
+                        null,
+                        tint = MaterialTheme.colorScheme.onErrorContainer,
+                    )
+                    DeviceText(it, color = MaterialTheme.colorScheme.onErrorContainer)
+                }
+            }
         }
         Box(Modifier.weight(1f)) {
             @Composable
@@ -322,7 +342,7 @@ fun DeviceScreen(
                             battery?.temperatureCelsius,
                             ::navigate,
                         )
-                    "Battery" -> ReferenceBattery(battery) { navigate("Battery details") }
+                    "Battery" -> BatteryOverview(battery) { navigate("Battery details") }
                     "Battery details" ->
                         BatteryScreen(
                             viewModel = batteryViewModel,
@@ -364,6 +384,7 @@ fun DeviceScreen(
                         )
                     "Sensors" -> SensorScreen()
                     "Apps" -> AppsScreen(apps, viewModel::refreshApps, query)
+                    "Device" -> DeviceLibrary(::navigate)
                     "Tests" -> TestsScreen { navigate(it) }
                     "Tools" -> ToolsScreen { navigate(it) }
                     "Benchmarks" -> BenchmarkScreen()
@@ -372,39 +393,49 @@ fun DeviceScreen(
                     "Battery monitor" -> BatteryHistoryScreen()
                     "Device report" ->
                         LazyColumn(
-                            contentPadding = PaddingValues(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                            contentPadding = ScreenPadding,
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
-                            item { SectionHeading("Export a device report") }
                             item {
-                                DeviceText(
-                                    "Reports include hardware and network details visible to this app. Review before sharing."
+                                ScreenIntro(
+                                    "Export a device report",
+                                    "Reports include hardware and network details visible to this app. Review before sharing.",
                                 )
                             }
-                            items(listOf("Text", "JSON", "HTML", "PDF", "PNG")) { format ->
-                                ActionTile("Export $format", "Choose where to save") {
-                                    exportFormat = format
-                                    exporter.launch(
-                                        "abCheck-${System.currentTimeMillis()}.${when(format) { "JSON" -> "json"
+                            item {
+                                ListGroup(
+                                    null,
+                                    listOf("Text", "JSON", "HTML", "PDF", "PNG").map { format ->
+                                        GroupEntry("Export $format", "Choose where to save") {
+                                            exportFormat = format
+                                            exporter.launch(
+                                                "abCheck-${System.currentTimeMillis()}.${when(format) { "JSON" -> "json"
  "HTML" -> "html"
  "PDF" -> "pdf"
  "PNG" -> "png"
  else -> "txt" }}"
-                                    )
-                                }
+                                            )
+                                        }
+                                    },
+                                )
                             }
                             item {
-                                ActionTile("Copy quick specs", "Copy device, OS and memory") {
-                                    context
-                                        .getSystemService(ClipboardManager::class.java)
-                                        .setPrimaryClip(
-                                            ClipData.newPlainText(
-                                                "Device specs",
-                                                "${Build.MANUFACTURER} ${Build.MODEL}\nAndroid ${Build.VERSION.RELEASE}\nRAM ${formatBytes(snapshot.ramTotal)}\nStorage ${formatBytes(snapshot.storageTotal)}",
-                                            )
-                                        )
-                                    message = "Copied to clipboard"
-                                }
+                                ListGroup(
+                                    null,
+                                    listOf(
+                                        GroupEntry("Copy quick specs", "Copy device, OS and memory") {
+                                            context
+                                                .getSystemService(ClipboardManager::class.java)
+                                                .setPrimaryClip(
+                                                    ClipData.newPlainText(
+                                                        "Device specs",
+                                                        "${Build.MANUFACTURER} ${Build.MODEL}\nAndroid ${Build.VERSION.RELEASE}\nRAM ${formatBytes(snapshot.ramTotal)}\nStorage ${formatBytes(snapshot.storageTotal)}",
+                                                    )
+                                                )
+                                            message = "Copied to clipboard"
+                                        }
+                                    ),
+                                )
                             }
                         }
                     "Settings" -> SettingsScreen(themeMode, onThemeModeChange, { language = true })
@@ -417,37 +448,36 @@ fun DeviceScreen(
                         }
                 }
             }
-            if (page in deviceTabs) {
-                HorizontalPager(
-                    state = pagerState,
-                    modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.Top,
-                ) { index ->
-                    PageContent(deviceTabs[index])
-                }
-            } else key(page) { PageContent(page) }
+            AnimatedContent(
+                targetState = page,
+                transitionSpec = { fadeIn(tween(140)) togetherWith fadeOut(tween(90)) },
+                label = "Destination",
+            ) { destination ->
+                pageState.SaveableStateProvider(destination) { PageContent(destination) }
+            }
+        }
+        CheckNavigation(page) { destination ->
+            if (destination != page) {
+                navigate(destination)
+                backStack = if (destination == "Dashboard") emptyList() else listOf("Dashboard")
+            }
         }
     }
 }
 
 @Composable
 fun SectionHeading(title: String) {
-    DeviceText(
-        title,
-        color = MaterialTheme.colorScheme.primary,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Medium,
-    )
+    DeviceText(title, style = MaterialTheme.typography.titleLarge)
 }
 
 @Composable
 fun SectionList(sections: List<DeviceSection>, header: @Composable () -> Unit = {}) {
-    ReferenceSections(sections, header)
+    DataSections(sections, header)
 }
 
 @Composable
 fun ActionTile(title: String, subtitle: String, onClick: () -> Unit) {
-    ReferenceActionRow(title, subtitle, onClick)
+    CheckActionRow(title, subtitle, onClick)
 }
 
 @Composable
@@ -458,9 +488,10 @@ private fun Dashboard(
     temperature: Float?,
     navigate: (String) -> Unit,
 ) {
-    ReferenceDashboard(snapshot, apps, percent, temperature, navigate)
+    CheckDashboard(snapshot, apps, percent, temperature, navigate)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppsScreen(apps: List<InstalledApp>, refresh: () -> Unit, query: String) {
     val context = LocalContext.current
@@ -472,24 +503,37 @@ private fun AppsScreen(apps: List<InstalledApp>, refresh: () -> Unit, query: Str
                 (it.label.contains(query, true) || it.packageName.contains(query, true))
         }
     Column(Modifier.fillMaxSize()) {
+        SingleChoiceSegmentedButtonRow(
+            Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)
+        ) {
+            val options = listOf("User", "System", "All")
+            options.forEachIndexed { index, name ->
+                SegmentedButton(
+                    selected = filter == name,
+                    onClick = { filter = name },
+                    shape = SegmentedButtonDefaults.itemShape(index, options.size),
+                    label = { DeviceText("$name apps", maxLines = 1) },
+                )
+            }
+        }
         LazyColumn(
             Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+            contentPadding = ScreenPadding,
         ) {
             item {
                 Surface(
                     color = MaterialTheme.colorScheme.surface,
-                    shape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp),
+                    shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
                 ) {
                     Row(
-                        Modifier.fillMaxWidth().padding(20.dp),
+                        Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp, top = 6.dp, bottom = 6.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         DeviceText(
                             "${deviceString(filter)} apps (${filtered.size})",
                             Modifier.weight(1f),
                             color = MaterialTheme.colorScheme.primary,
-                            fontSize = 16.sp,
+                            style = MaterialTheme.typography.titleSmall,
                         )
                         IconButton(onClick = refresh) {
                             Icon(
@@ -503,29 +547,6 @@ private fun AppsScreen(apps: List<InstalledApp>, refresh: () -> Unit, query: Str
             }
             items(filtered, key = { it.packageName }) { app ->
                 AppListRow(app, app == filtered.lastOrNull()) { selected = app }
-            }
-        }
-        NavigationBar(
-            containerColor = MaterialTheme.colorScheme.surface,
-            tonalElevation = 0.dp,
-            windowInsets = WindowInsets(0, 0, 0, 0),
-        ) {
-            listOf("User", "System", "All").forEach { name ->
-                NavigationBarItem(
-                    selected = filter == name,
-                    onClick = { filter = name },
-                    icon = {
-                        Icon(
-                            when (name) {
-                                "User" -> Icons.Default.Person
-                                "System" -> Icons.Default.Android
-                                else -> Icons.Default.Apps
-                            },
-                            null,
-                        )
-                    },
-                    label = { DeviceText(name) },
-                )
             }
         }
     }
@@ -574,50 +595,71 @@ private fun AppsScreen(apps: List<InstalledApp>, refresh: () -> Unit, query: Str
 private fun SettingsScreen(mode: ThemeMode, change: (ThemeMode) -> Unit, language: () -> Unit) {
     val context = LocalContext.current
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = ScreenPadding,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        item { SectionHeading("Appearance") }
-        items(ThemeMode.entries) { m ->
-            ActionTile(
-                "${m.name.lowercase().replaceFirstChar { it.uppercase() }} theme",
-                if (mode == m) "Selected" else "",
-            ) {
-                change(m)
-            }
-        }
-        item { ActionTile("Language", "Choose app language") { language() } }
-        item { SectionHeading("Android access") }
         item {
-            ActionTile("App permissions", "Camera, microphone, nearby devices and location") {
-                context.startActivity(
-                    Intent(
-                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.parse("package:${context.packageName}"),
-                    )
-                )
-            }
-        }
-        item {
-            ActionTile("Usage access", "Screen time and app usage") {
-                context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-            }
-        }
-        item {
-            ActionTile("Display over other apps", "Floating monitors") {
-                context.startActivity(
-                    Intent(
-                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:${context.packageName}"),
-                    )
-                )
-            }
-        }
-        item {
-            DeviceText(
-                "Diagnostics run locally. Permissions are requested when a tool needs them. Internet is used only by connectivity tools you start. No analytics or advertising SDKs.",
-                fontSize = 13.sp,
+            ListGroup(
+                "Appearance",
+                ThemeMode.entries.map { m ->
+                    GroupEntry(
+                        "${m.name.lowercase().replaceFirstChar { it.uppercase() }} theme",
+                        icon =
+                            when (m) {
+                                ThemeMode.SYSTEM -> Icons.Default.BrightnessAuto
+                                ThemeMode.LIGHT -> Icons.Default.LightMode
+                                ThemeMode.DARK -> Icons.Default.DarkMode
+                            },
+                        selected = mode == m,
+                    ) {
+                        change(m)
+                    }
+                } + GroupEntry("Language", "Choose app language") { language() },
             )
+        }
+        item {
+            ListGroup(
+                "Android access",
+                listOf(
+                    GroupEntry("App permissions", "Camera, microphone, nearby devices and location") {
+                        context.startActivity(
+                            Intent(
+                                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                Uri.parse("package:${context.packageName}"),
+                            )
+                        )
+                    },
+                    GroupEntry("Usage access", "Screen time and app usage") {
+                        context.startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+                    },
+                    GroupEntry("Display over other apps", "Floating monitors") {
+                        context.startActivity(
+                            Intent(
+                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                Uri.parse("package:${context.packageName}"),
+                            )
+                        )
+                    },
+                ),
+            )
+        }
+        item {
+            Row(
+                Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                Icon(
+                    Icons.Default.Lock,
+                    null,
+                    Modifier.size(18.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                DeviceText(
+                    "Diagnostics run locally. Permissions are requested when a tool needs them. Internet is used only by connectivity tools you start. No analytics or advertising SDKs.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }

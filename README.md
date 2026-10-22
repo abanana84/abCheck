@@ -10,7 +10,7 @@
 
 abCheck brings device information, hardware tests, live monitoring and battery diagnostics into one open-source Android app. No ads, analytics or account required. Core diagnostics work without root; optional Shizuku tools need a separate setup.
 
-> **Available on Google Play:** Version 1.2.0 brings device information, hardware tests and live monitoring to abCheck, alongside the existing battery tools. The screenshots below show 1.2.0. Existing GitHub releases 1.1.x are historical ABattery builds.
+> **Version 1.3.0:** A redesigned interface with Dashboard, Device, Tests and Tools navigation. Download the latest build from [GitHub Releases](https://github.com/abanana84/abCheck/releases/latest), or get the currently available version on Google Play. Play updates become available after Google review.
 
 [Google Play](https://play.google.com/store/apps/details?id=com.abanana.abattery) · [Report a bug](https://github.com/abanana84/abCheck/issues/new?template=bug.yml) · [Request a feature](https://github.com/abanana84/abCheck/issues/new?template=feature.yml) · [Privacy policy](PRIVACY.md)
 
@@ -29,12 +29,12 @@ abCheck brings device information, hardware tests, live monitoring and battery d
 
 Light, dark and system themes are supported. Existing battery screens retain 16 languages; the expanded diagnostic interface has English and Vietnamese labels, with English fallbacks where translations are missing.
 
-## Screenshots of 1.2.0
+## Screenshots of 1.3.0
 
 Captured from the app on an Android emulator. Hardware values describe that emulator, not a physical phone.
 
 <p align="center">
-  <img src="docs/images/abcheck-dashboard.png" alt="abCheck dashboard with virtual CPU cores, RAM, storage and battery" width="24%" />
+  <img src="docs/images/abcheck-dashboard.png" alt="abCheck dashboard with CPU status, RAM, storage and battery" width="24%" />
   <img src="docs/images/abcheck-hardware.png" alt="Hardware information" width="24%" />
   <img src="docs/images/abcheck-system.png" alt="Android system information" width="24%" />
   <img src="docs/images/abcheck-battery.png" alt="Battery overview" width="24%" />
@@ -45,6 +45,8 @@ Captured from the app on an Android emulator. Hardware values describe that emul
   <img src="docs/images/abcheck-sensors.png" alt="Sensors" width="24%" />
   <img src="docs/images/abcheck-tools.png" alt="Diagnostic tools" width="24%" />
 </p>
+
+The [complete screen gallery](docs/screenshots/README.md) covers device pages, all hardware checks and diagnostic tools. A downloadable screenshot archive is also attached to [release 1.3.0](https://github.com/abanana84/abCheck/releases/tag/v1.3.0).
 
 ## Honest measurements and device limits
 

@@ -1,1 +1,1 @@
-Device info, hardware tests, system monitoring and battery diagnostics
+Explore device info, run hardware checks and monitor your system and battery

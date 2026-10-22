@@ -25,6 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.abanana.abattery.diagnostics.DiagnosticResults
 import com.abanana.abattery.data.device.*
 import kotlinx.coroutines.*
 
@@ -77,11 +79,78 @@ val toolNames =
 
 @Composable
 fun TestsScreen(navigate: (String) -> Unit) {
+    val context = LocalContext.current
+    val groups =
+        listOf(
+            "Display and touch" to testNames.take(3),
+            "Controls and feedback" to testNames.slice(3..4),
+            "Audio and camera" to testNames.slice(5..9),
+            "Sensors" to testNames.slice(10..14),
+            "Connections and security" to testNames.drop(15),
+        )
+    // Re-read on each visit so observations recorded inside a test show up immediately.
+    val results = remember { DiagnosticResults.results(context) }
+    val passed = testNames.count { results[it] == "Pass" }
+    val failed = testNames.count { results[it] == "Fail" }
+    val good = MaterialTheme.colorScheme.primary
+    val bad = MaterialTheme.colorScheme.error
     LazyColumn(
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
-        verticalArrangement = Arrangement.spacedBy(1.dp),
+        contentPadding = ScreenPadding,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(testNames, key = { it }) { name -> ActionTile(name, "") { navigate(name) } }
+        item { ScreenIntro("Hardware checks", "Run a check, then record your observation.") }
+        item {
+            CheckCard(Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Row(
+                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        DeviceText(
+                            "${passed + failed} / ${testNames.size}",
+                            Modifier.weight(1f),
+                            style = com.abanana.abattery.ui.theme.ReadingStyle,
+                            fontSize = 22.sp,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                        )
+                        StatusPill("${deviceString("Pass")} $passed", good)
+                        StatusPill("${deviceString("Fail")} $failed", bad)
+                    }
+                    Row(
+                        Modifier.fillMaxWidth()
+                            .height(6.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceVariant,
+                                androidx.compose.foundation.shape.RoundedCornerShape(3.dp),
+                            )
+                    ) {
+                        if (passed > 0)
+                            Box(Modifier.weight(passed.toFloat()).fillMaxHeight().background(good))
+                        if (failed > 0)
+                            Box(Modifier.weight(failed.toFloat()).fillMaxHeight().background(bad))
+                        val rest = testNames.size - passed - failed
+                        if (rest > 0) Spacer(Modifier.weight(rest.toFloat()))
+                    }
+                }
+            }
+        }
+        groups.forEach { (title, names) ->
+            item(key = title) {
+                ListGroup(
+                    title,
+                    names.map { name ->
+                        val result = results[name]
+                        GroupEntry(
+                            name,
+                            badge = result?.takeIf { it != "Not tested" }?.let { deviceString(it) },
+                            badgeColor = if (result == "Fail") bad else good,
+                        ) {
+                            navigate(name)
+                        }
+                    },
+                )
+            }
+        }
     }
 }
 
@@ -119,22 +188,18 @@ fun ToolsScreen(navigate: (String) -> Unit) {
                     "Network reachability",
                     "GPS",
                 ),
+            "Live monitoring" to listOf("Monitors", "Battery monitor", "Widgets"),
+            "Benchmarks" to listOf("Benchmarks"),
             "Reports" to listOf("Device report"),
         )
     LazyColumn(
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
-        verticalArrangement = Arrangement.spacedBy(1.dp),
+        contentPadding = ScreenPadding,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         groups.forEach { (title, names) ->
-            item {
-                DeviceText(
-                    title,
-                    Modifier.padding(start = 16.dp, top = 20.dp, bottom = 10.dp),
-                    color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.titleMedium,
-                )
+            item(key = title) {
+                ListGroup(title, names.map { name -> GroupEntry(name) { navigate(name) } })
             }
-            items(names, key = { it }) { name -> ActionTile(name, "") { navigate(name) } }
         }
     }
 }

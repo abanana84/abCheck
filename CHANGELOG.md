@@ -2,6 +2,14 @@
 
 All notable changes to abCheck are documented here.
 
+## [1.3.0] - 2026-10-22
+
+- Redesigned the interface with four main destinations: Dashboard, Device, Tests and Tools.
+- Added grouped device details and hardware checks, clearer reading cards and consistent light/dark surfaces.
+- Preserved battery diagnostics, tests, live monitoring, benchmarks, widgets and report exports.
+- Updated store screenshots and release documentation.
+- Replaced downloadable font dependencies in the UI with local device fonts for reliable startup.
+
 ## [1.2.0] - 2026-10-22
 
 - Renamed the app to abCheck Device & System; Android package remains unchanged.

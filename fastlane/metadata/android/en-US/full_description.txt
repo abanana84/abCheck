@@ -1,26 +1,26 @@
-abCheck helps you understand the hardware, system and battery information exposed by your Android device.
+Get to know your Android device with abCheck Device & System. Explore hardware details, check components and follow live system readings in one free, open-source app.
 
-View battery level, charge status, temperature, voltage, live current, charging power, battery technology, design capacity, full-charge capacity, health status, and cycle count in one Material 3 dashboard.
+A clearer way to explore your phone
+The redesigned dashboard puts battery, memory, storage and CPU status together. Four main destinations - Dashboard, Device, Tests and Tools - make it easy to find information and return to your checks. Choose light, dark or system appearance.
 
-Battery reporting varies between Android versions and manufacturers. abCheck prefers public Android APIs, uses narrow local fallbacks when available, and clearly marks estimated cycle values. When the device does not expose enough information, the app shows N/A instead of inventing a measurement.
+Device information
+Explore processor, graphics, display, memory, Android build, network, installed apps, camera capabilities and live sensors. Search supported information pages and filter visible apps.
 
-Features:
-* Live charging and discharging current chart
-* Reported or best-effort battery cycle count
-* Design and full-charge capacity when exposed by the device
-* Light, dark, and system themes
-* 16 languages
-* No root required
-* No ads or analytics
-* Hardware, system, network, apps, camera and live sensor information
-* Display, touch, key, audio, microphone and camera tests
-* Wi-Fi, Bluetooth, GPS and USB tools
-* Local CPU, memory, storage and GPU benchmarks
-* Foreground battery recording, floating monitors and widgets
-* Export device reports as Text, JSON, HTML, PDF or PNG
-* No account or automatic telemetry
-* Optional permissions requested by the tools that need them
+Hardware checks
+Run display, brightness, multitouch, button, vibration, speaker, earpiece, microphone, flashlight, camera and sensor checks. Record your own Pass or Fail observations. Available checks depend on your device and permissions.
 
-abCheck is free and open-source software licensed under Apache-2.0.
+Battery insights
+See level, charging state, temperature, voltage, current and power. View health, capacity and cycle information when Android exposes them. Follow the current chart and record battery sessions locally.
 
-Network access is used by connectivity tools that you start. All diagnostic history remains local unless you explicitly export or share it. New diagnostic labels are available in English and Vietnamese; existing battery translations remain available in 16 languages. Root and Shizuku are optional for advanced read-only diagnostics.
+Tools and live monitoring
+Use Wi-Fi, Bluetooth, GPS, USB and user-started network diagnostics. Explore system graphs, floating monitors, home-screen widgets, local benchmarks and saved history. Export device reports as Text, JSON, HTML, PDF or PNG.
+
+Your data stays under your control
+No ads, analytics or account required. Diagnostic history is stored locally. Connectivity tools use network access when you start them. Reports are shared only when you choose to export or share. Optional permissions are requested by the tools that need them. Advanced read-only root and Shizuku diagnostics require separate setup.
+
+Understand the limits
+Android and manufacturers restrict some readings. Unavailable values remain N/A and estimates are labeled. abCheck does not reconstruct battery history from before installation. Local benchmark scores describe abCheck workloads and are not comparable to other benchmark apps. Core diagnostics work without root.
+
+Diagnostic labels are available in English and Vietnamese, with English fallbacks where needed. Existing battery screens retain translations in 16 languages.
+
+Android 8.0 or newer. Licensed under Apache 2.0.

@@ -73,7 +73,9 @@ private val AppDarkMaterial =
         surfaceContainerHighest = SurfaceHighest,
         surfaceContainerLowest = BgDark,
         primary = PrimaryGreen,
+        onPrimary = BgDark,
         primaryContainer = PrimaryContainer,
+        onPrimaryContainer = OnSurface,
         secondary = SecondaryColor,
         secondaryContainer = PrimaryContainer,
         onSecondaryContainer = OnSurface,
@@ -96,7 +98,9 @@ private val AppLightMaterial =
         surfaceContainerHighest = LightSurfaceHigh,
         surfaceContainerLowest = LightBg,
         primary = LightPrimaryGreen,
+        onPrimary = LightSurfaceLow,
         primaryContainer = LightPrimaryContainer,
+        onPrimaryContainer = LightOnSurface,
         secondary = LightSecondary,
         secondaryContainer = LightPrimaryContainer,
         onSecondaryContainer = LightOnSurface,
@@ -122,6 +126,7 @@ fun ABatteryTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
     CompositionLocalProvider(LocalAbatteryColors provides extended) {
         MaterialTheme(
             colorScheme = material,
+            typography = CheckTypography,
             shapes =
                 Shapes(
                     extraSmall = RoundedCornerShape(4.dp),

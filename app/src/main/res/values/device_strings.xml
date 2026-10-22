@@ -246,4 +246,32 @@
     <string name="device_label_243" formatted="false">Linear acceleration</string>
     <string name="device_label_244" formatted="false">Rotation vector</string>
     <string name="device_label_245" formatted="false">Humidity</string>
+    <string name="device_label_246" formatted="false">Device &amp; System</string>
+    <string name="device_label_247" formatted="false">Quick checks</string>
+    <string name="device_label_248" formatted="false">Live monitoring</string>
+    <string name="device_label_249" formatted="false">Device information</string>
+    <string name="device_label_250" formatted="false">Explore the details your device makes available.</string>
+    <string name="device_label_251" formatted="false">Processor, graphics, display and memory</string>
+    <string name="device_label_252" formatted="false">Android, build and device identity</string>
+    <string name="device_label_253" formatted="false">Health, cycles and charging</string>
+    <string name="device_label_254" formatted="false">Connections and network configuration</string>
+    <string name="device_label_255" formatted="false">Installed apps and permissions</string>
+    <string name="device_label_256" formatted="false">Camera capabilities and preview</string>
+    <string name="device_label_257" formatted="false">Live readings and sensor details</string>
+    <string name="device_label_258" formatted="false">Hardware checks</string>
+    <string name="device_label_259" formatted="false">Run a check, then record your observation.</string>
+    <string name="device_label_260" formatted="false">Display and touch</string>
+    <string name="device_label_261" formatted="false">Controls and feedback</string>
+    <string name="device_label_262" formatted="false">Audio and camera</string>
+    <string name="device_label_263" formatted="false">Connections and security</string>
+    <string name="device_label_264" formatted="false">Export or share device information</string>
+    <string name="device_label_265" formatted="false">About</string>
+    <string name="device_label_266" formatted="false">User apps</string>
+    <string name="device_label_267" formatted="false">System apps</string>
+    <string name="device_label_268" formatted="false">All apps</string>
+    <string name="device_label_269" formatted="false">Quick access</string>
+    <string name="device_label_270" formatted="false">Pass</string>
+    <string name="device_label_271" formatted="false">Fail</string>
+    <string name="device_label_272" formatted="false">Not tested</string>
+    <string name="device_label_273" formatted="false">Record your observation after running the test</string>
 </resources>

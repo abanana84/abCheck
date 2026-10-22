@@ -1,0 +1,4 @@
+Redesigned interface with Dashboard, Device, Tests and Tools navigation.
+Clearer hardware readings, grouped checks and easier access to monitoring and reports.
+Updated light and dark themes.
+Existing battery diagnostics, device tools and export features retained.

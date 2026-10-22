@@ -63,7 +63,7 @@ fun SensorScreen(sensorType: Int? = null) {
         }
     }
     LazyColumn(
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+        contentPadding = PaddingValues(20.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         if (sensorType != null) item { SectionHeading("Live sensor readings") }
@@ -73,6 +73,11 @@ fun SensorScreen(sensorType: Int? = null) {
             Surface(
                 onClick = { selected = if (expanded && sensorType == null) null else s },
                 shape = RoundedCornerShape(16.dp),
+                border =
+                    androidx.compose.foundation.BorderStroke(
+                        1.dp,
+                        MaterialTheme.colorScheme.outlineVariant,
+                    ),
                 color = MaterialTheme.colorScheme.surface,
             ) {
                 Column(Modifier.fillMaxWidth().padding(18.dp)) {

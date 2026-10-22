@@ -21,19 +21,16 @@ fun SectionCard(
 ) {
     val bg = color ?: AppTheme.colors.surfaceLow
     Surface(
-        modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        shape = RoundedCornerShape(16.dp),
+        modifier = modifier.fillMaxWidth().fillMaxHeight(),
+        shape = RoundedCornerShape(20.dp),
+        border =
+            androidx.compose.foundation.BorderStroke(
+                1.dp,
+                com.abanana.abattery.ui.theme.AppTheme.colors.outlineVariant,
+            ),
         color = bg,
         tonalElevation = 0.dp,
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(20.dp),
-            content = content,
-        )
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(20.dp), content = content)
     }
 }

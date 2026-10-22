@@ -50,49 +50,102 @@ class DeviceIntegrationTest {
     }
 
     private fun click(text: String) {
-        repeat(8) {
+        if (text in listOf("Dashboard", "Device", "Tests", "Tools")) {
+            val heading = if (text == "Dashboard") "abCheck" else text
+            if (
+                device.findObjects(By.text(heading)).any {
+                    it.visibleBounds.top < (device.displayHeight * .14).toInt()
+                }
+            )
+                return
+        }
+        if (
+            text in com.abanana.abattery.presentation.device.deviceTabs.drop(1) &&
+                device.hasObject(By.text("CPU status"))
+        )
+            click("Device")
+        repeat(16) { attempt ->
             device.waitForIdle(1000)
             if (android.os.Build.VERSION.SDK_INT >= 33) instrumentation.uiAutomation.clearCache()
-            val target = device.findObject(By.text(text))
-            if (
-                target != null &&
-                    target.visibleBounds.top > 350 &&
-                    target.visibleBounds.bottom <
-                        device.displayHeight -
-                            (if (text in listOf("Pass", "Fail", "Not tested")) 80 else 150)
-            ) {
-                target.click()
-                device.waitForIdle(1000)
-                android.os.SystemClock.sleep(200)
-                if (android.os.Build.VERSION.SDK_INT >= 33)
-                    instrumentation.uiAutomation.clearCache()
+            val rootDestination = text in listOf("Dashboard", "Device", "Tests", "Tools")
+            val matches = device.findObjects(By.text(text))
+            for (target in
+                if (rootDestination) matches.sortedByDescending { it.visibleBounds.top }
+                else matches) {
+                var action: UiObject2? = target
+                var depth = 0
+                while (
+                    action != null &&
+                        !action.isClickable &&
+                        !action.isCheckable &&
+                        !(rootDestination && action.isSelected) &&
+                        depth++ < 4
+                ) action = action.parent
+                val bounds = action?.visibleBounds
+                val contentBottom =
+                    device.displayHeight - (90 * context.resources.displayMetrics.density).toInt()
                 if (
-                    (text in com.abanana.abattery.presentation.device.testNames &&
-                        device.hasObject(By.text("Open test"))) ||
-                        (text in com.abanana.abattery.presentation.device.toolNames &&
-                            device.hasObject(By.text("Open tool")))
+                    (action?.isClickable == true ||
+                        action?.isCheckable == true ||
+                        (rootDestination && action?.isSelected == true)) &&
+                        bounds != null &&
+                        bounds.height() > 0 &&
+                        bounds.top >= 0 &&
+                        bounds.bottom <
+                            (if (rootDestination) device.displayHeight - 20 else contentBottom)
                 ) {
-                    device.findObject(By.text(text))?.click()
+                    action.click()
+                    android.os.SystemClock.sleep(250)
                     device.waitForIdle(1000)
+                    if (android.os.Build.VERSION.SDK_INT >= 33)
+                        instrumentation.uiAutomation.clearCache()
+                    val destinations =
+                        com.abanana.abattery.presentation.device.testNames +
+                            com.abanana.abattery.presentation.device.toolNames +
+                            com.abanana.abattery.presentation.device.deviceTabs +
+                            listOf(
+                                "Device",
+                                "Battery details",
+                                "Monitors",
+                                "Widgets",
+                                "Battery monitor",
+                                "Benchmarks",
+                            )
+                    if (text in destinations) {
+                        val heading = if (text == "Dashboard") "abCheck" else text
+                        val reached =
+                            device.findObjects(By.text(heading)).any {
+                                it.visibleBounds.top < (device.displayHeight * .14).toInt()
+                            }
+                        if (!reached) {
+                            device
+                                .findObjects(By.text(text))
+                                .firstOrNull { it.visibleBounds.height() > 0 }
+                                ?.click()
+                            android.os.SystemClock.sleep(300)
+                            if (android.os.Build.VERSION.SDK_INT >= 33)
+                                instrumentation.uiAutomation.clearCache()
+                        }
+                    }
+                    return
                 }
-                if (android.os.Build.VERSION.SDK_INT >= 33)
-                    instrumentation.uiAutomation.clearCache()
-                return
             }
-            device.swipe(600, 2300, 600, 900, 25)
+            device.swipe(
+                device.displayWidth / 2,
+                (device.displayHeight * (if (attempt < 7) .75 else .35)).toInt(),
+                device.displayWidth / 2,
+                (device.displayHeight * (if (attempt < 7) .35 else .75)).toInt(),
+                25,
+            )
             android.os.SystemClock.sleep(350)
         }
         fail("Missing UI action: $text")
     }
 
     private fun backHome() {
-        repeat(4) {
-            if (device.hasObject(By.text("CPU status"))) return
-            device.pressBack()
-            device.waitForIdle(1000)
-            if (android.os.Build.VERSION.SDK_INT >= 33) instrumentation.uiAutomation.clearCache()
-        }
-        assertTrue(device.wait(Until.hasObject(By.text("CPU status")), 3000))
+        click("Dashboard")
+        assertTrue(device.wait(Until.hasObject(By.pkg(context.packageName)), 3000))
+        assertTrue(device.wait(Until.hasObject(By.text("abCheck")), 3000))
     }
 
     private fun openTest(name: String) {
@@ -103,6 +156,162 @@ class DeviceIntegrationTest {
     private fun openTool(name: String) {
         click("Tools")
         click(name)
+    }
+
+    private fun capture(name: String) {
+        android.os.SystemClock.sleep(350)
+        device.waitForIdle(1000)
+        val dir = File("/sdcard/Android/media/${context.packageName}/ui-refresh").apply { mkdirs() }
+        assertTrue(device.takeScreenshot(File(dir, "$name.png")))
+        device.dumpWindowHierarchy(File(dir, "$name.xml"))
+    }
+
+    @Test
+    fun captureRedesignedScreensAndVerifyRoutes() {
+        capture("01-dashboard")
+        click("Device")
+        capture("02-device")
+        click("Hardware")
+        capture("03-hardware")
+        click("Dashboard")
+        click("Device")
+        click("Battery")
+        capture("04-battery")
+        click("Battery details")
+        assertTrue(device.wait(Until.hasObject(By.desc("Back")), 3000))
+        capture("05-battery-details")
+        click("Dashboard")
+        click("Tests")
+        capture("06-tests")
+        click("Tools")
+        capture("07-tools")
+        click("Dashboard")
+        click("Device")
+        click("Apps")
+        capture("08-apps")
+        click("System apps")
+        capture("09-system-apps")
+        click("Dashboard")
+        click("Device")
+        click("Sensors")
+        capture("10-sensors")
+        click("Dashboard")
+        device.findObject(By.desc("Change theme")).click()
+        android.os.SystemClock.sleep(350)
+        capture("11-theme")
+        device.findObject(By.desc("Change theme")).click()
+        android.os.SystemClock.sleep(350)
+        capture("12-theme")
+        device.findObject(By.desc("Change theme")).click()
+    }
+
+    @Test
+    fun captureRemainingCategoriesAndAccessibleLayouts() {
+        for (name in listOf("System", "Network", "Camera")) {
+            click("Device")
+            click(name)
+            assertTrue(device.hasObject(By.text(name)))
+            capture("detail-${name.lowercase()}")
+            click("Dashboard")
+        }
+        val oldFontScale = device.executeShellCommand("settings get system font_scale").trim()
+        try {
+            device.executeShellCommand("wm size 720x1280")
+            device.executeShellCommand("wm density 320")
+            device.executeShellCommand("settings put system font_scale 1.3")
+            android.os.SystemClock.sleep(700)
+            instrumentation.runOnMainSync {
+                androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(
+                    androidx.core.os.LocaleListCompat.forLanguageTags("vi")
+                )
+            }
+            assertTrue(device.wait(Until.hasObject(By.text("Tổng quan")), 5000))
+            capture("small-vi-large-text")
+            device.findObject(By.text("Thiết bị")).click()
+            assertTrue(device.wait(Until.hasObject(By.text("Thông tin thiết bị")), 3000))
+            capture("small-vi-device")
+        } finally {
+            device.executeShellCommand("wm size reset")
+            device.executeShellCommand("wm density reset")
+            device.executeShellCommand(
+                if (oldFontScale == "null") "settings delete system font_scale"
+                else "settings put system font_scale $oldFontScale"
+            )
+            instrumentation.runOnMainSync {
+                androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(
+                    androidx.core.os.LocaleListCompat.forLanguageTags("en")
+                )
+            }
+        }
+    }
+
+    @Test
+    fun captureReleaseScreenInventory() {
+        fun save(name: String) = capture("release-" + name.lowercase().replace(" ", "-"))
+        save("dashboard")
+        click("Device")
+        save("device")
+        click("Tests")
+        save("tests")
+        click("Tools")
+        save("tools")
+        for (name in com.abanana.abattery.presentation.device.deviceTabs.drop(1)) {
+            click("Dashboard")
+            click("Device")
+            click(name)
+            save(name)
+        }
+        click("Dashboard")
+        click("Device")
+        click("Battery")
+        click("Battery details")
+        save("battery details")
+        device.pressBack()
+        for (name in com.abanana.abattery.presentation.device.testNames) {
+            backHome()
+            openTest(name)
+            save(name)
+            device.pressBack()
+        }
+        for (name in
+            com.abanana.abattery.presentation.device.toolNames +
+                listOf("Monitors", "Battery monitor", "Widgets", "Benchmarks")) {
+            backHome()
+            openTool(name)
+            save(name)
+            device.pressBack()
+        }
+        backHome()
+    }
+
+    @Test
+    fun captureStoreScreenshots() {
+        context.getSharedPreferences("diagnostic_results", 0).edit().clear().commit()
+        val kind = InstrumentationRegistry.getArguments().getString("screenshotKind", "phone")
+        capture("store-$kind-dashboard")
+        for (name in listOf("Hardware", "System", "Battery", "Network", "Camera", "Sensors")) {
+            backHome()
+            click("Device")
+            click(name)
+            capture("store-$kind-${name.lowercase()}")
+        }
+        for (name in listOf("Device", "Tests", "Tools")) {
+            click(name)
+            capture("store-$kind-${name.lowercase()}")
+        }
+        backHome()
+        device.findObject(By.desc("More options")).click()
+        capture("release-menu")
+        click("About")
+        capture("release-about")
+        device.pressBack()
+        device.findObject(By.desc("More options")).click()
+        click("Language")
+        capture("release-language")
+        device.pressBack()
+        device.findObject(By.desc("More options")).click()
+        click("Settings")
+        capture("release-settings")
     }
 
     @Test
@@ -217,7 +426,7 @@ class DeviceIntegrationTest {
     @Test
     fun restrictedToolsShowHonestScope() {
         openTool("Task manager")
-        click("Android access")
+        assertTrue(device.hasObject(By.text("Android access")))
         assertTrue(
             device.hasObject(By.textContains("System-wide management requires privileged access"))
         )
@@ -344,15 +553,26 @@ class DeviceIntegrationTest {
     }
 
     @Test
-    fun tabsSupportHorizontalSwipe() {
-        device.swipe(1000, 1400, 200, 1400, 30)
+    fun primaryNavigationAndDeviceCategoriesRemainReachable() {
+        click("Device")
+        assertTrue(device.wait(Until.hasObject(By.text("Device information")), 3000))
+        click("Hardware")
         assertTrue(device.wait(Until.hasObject(By.text("Processor")), 3000))
+        click("System")
+        assertTrue(device.wait(Until.hasObject(By.text("Android")), 3000))
+        click("Dashboard")
+        assertTrue(device.wait(Until.hasObject(By.text("CPU status")), 3000))
+        click("Tests")
+        assertTrue(device.wait(Until.hasObject(By.text("Hardware checks")), 3000))
+        click("Tools")
+        assertTrue(device.wait(Until.hasObject(By.text("Root check")), 3000))
         backHome()
     }
 
     @Test
     fun observationsPersistAndAreExplicitlyManual() {
         openTest("Vibration")
+        click("Fail")
         click("Pass")
         assertEquals("Pass", DiagnosticResults.results(context)["Vibration"])
         val report = DeviceRepository(context).snapshot().withObservations(context)
@@ -382,16 +602,15 @@ class DeviceIntegrationTest {
 
     @Test
     fun permissionsGateCanBeDeclinedWithoutLosingOtherTools() {
+        for (permission in listOf("ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION")) {
+            device.executeShellCommand(
+                "pm clear-permission-flags ${context.packageName} android.permission.$permission user-set user-fixed"
+            )
+        }
         openTool("GPS")
         assertTrue(device.wait(Until.hasObject(By.text("Grant permission")), 3000))
         click("Grant permission")
-        val deny =
-            device.wait(
-                Until.findObject(
-                    By.res("com.android.permissioncontroller:id/permission_deny_button")
-                ),
-                3000,
-            )
+        val deny = device.wait(Until.findObject(By.text("Don’t allow")), 3000)
         assertNotNull(deny)
         deny!!.click()
         assertTrue(device.wait(Until.hasObject(By.text("Open app settings")), 3000))
