@@ -20,3 +20,8 @@ secrets.properties
 google-services.json
 .env
 .env.*
+
+# Local reference packages and analysis tools
+/research/
+/.kotlin/
+*.xapk

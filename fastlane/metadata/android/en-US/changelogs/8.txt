@@ -1,0 +1,7 @@
+Introducing abCheck Device & System, formerly Battery Health & Cycles.
+- Device, hardware, system, network, apps, camera and sensor information.
+- Interactive hardware tests and optional diagnostic tools.
+- Live monitors, battery history, widgets and local benchmarks.
+- Device reports in text, JSON, HTML, PDF and PNG.
+- Existing battery diagnostics retained.
+- Targets Android 16 (API 36).

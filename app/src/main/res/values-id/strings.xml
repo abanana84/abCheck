@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kesehatan Baterai &amp; Siklus</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">Kesehatan baterai</string>
     <string name="section_status">Status</string>
     <string name="status_charging">Mengisi daya</string>

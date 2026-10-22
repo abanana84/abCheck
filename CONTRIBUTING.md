@@ -1,6 +1,6 @@
-# Contributing to ABattery
+# Contributing to abCheck
 
-Thank you for helping improve ABattery. Contributions can be code, device compatibility reports, translations, tests, documentation, or design feedback.
+Thank you for helping improve abCheck. Contributions can be code, device compatibility reports, translations, tests, documentation, or design feedback.
 
 ## Before you start
 
@@ -14,8 +14,8 @@ Thank you for helping improve ABattery. Contributions can be code, device compat
 You need JDK 17, Android SDK 36, and an Android Studio version compatible with the Gradle files in this repository.
 
 ```bash
-git clone https://github.com/abanana84/abattery.git
-cd abattery
+git clone https://github.com/abanana84/abCheck.git
+cd abCheck
 ./gradlew testDebugUnitTest lintDebug assembleDebug
 ```
 

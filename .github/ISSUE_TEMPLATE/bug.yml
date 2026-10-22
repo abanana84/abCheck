@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve ABattery. Do not include serial numbers, account details, or other sensitive information.
+        Thank you for helping improve abCheck. Do not include serial numbers, account details, or other sensitive information.
 
   - type: input
     id: app-version
@@ -50,7 +50,7 @@ body:
     id: description
     attributes:
       label: What happened?
-      description: Explain the observed behavior and which battery field is affected.
+      description: Explain the observed behavior and which screen, tool or reading is affected.
     validations:
       required: true
 

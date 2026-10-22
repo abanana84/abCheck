@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="device_label_0" formatted="false">Dashboard</string>
+    <string name="device_label_1" formatted="false">Hardware</string>
+    <string name="device_label_2" formatted="false">System</string>
+    <string name="device_label_3" formatted="false">Battery</string>
+    <string name="device_label_4" formatted="false">Network</string>
+    <string name="device_label_5" formatted="false">Apps</string>
+    <string name="device_label_6" formatted="false">Camera</string>
+    <string name="device_label_7" formatted="false">Sensors</string>
+    <string name="device_label_8" formatted="false">Tests</string>
+    <string name="device_label_9" formatted="false">Tools</string>
+    <string name="device_label_10" formatted="false">Widgets</string>
+    <string name="device_label_11" formatted="false">Monitors</string>
+    <string name="device_label_12" formatted="false">Benchmarks</string>
+    <string name="device_label_13" formatted="false">Battery monitor</string>
+    <string name="device_label_14" formatted="false">Device report</string>
+    <string name="device_label_15" formatted="false">Settings</string>
+    <string name="device_label_16" formatted="false">Privacy policy</string>
+    <string name="device_label_17" formatted="false">Language</string>
+    <string name="device_label_18" formatted="false">CPU status</string>
+    <string name="device_label_19" formatted="false">Virtual CPU</string>
+    <string name="device_label_20" formatted="false">Offline</string>
+    <string name="device_label_21" formatted="false">Frequency unavailable</string>
+    <string name="device_label_22" formatted="false">RAM</string>
+    <string name="device_label_23" formatted="false">Storage</string>
+    <string name="device_label_24" formatted="false">Display</string>
+    <string name="device_label_25" formatted="false">CPU analysis</string>
+    <string name="device_label_26" formatted="false">System graphs</string>
+    <string name="device_label_27" formatted="false">Temperatures</string>
+    <string name="device_label_28" formatted="false">Wi-Fi scan</string>
+    <string name="device_label_29" formatted="false">Bluetooth scan</string>
+    <string name="device_label_30" formatted="false">USB</string>
+    <string name="device_label_31" formatted="false">Network usage</string>
+    <string name="device_label_32" formatted="false">Screen time</string>
+    <string name="device_label_33" formatted="false">Permissions explorer</string>
+    <string name="device_label_34" formatted="false">Task manager</string>
+    <string name="device_label_35" formatted="false">Logcat</string>
+    <string name="device_label_36" formatted="false">OpenGL info</string>
+    <string name="device_label_37" formatted="false">Network reachability</string>
+    <string name="device_label_38" formatted="false">Network mapper</string>
+    <string name="device_label_39" formatted="false">Shizuku diagnostics</string>
+    <string name="device_label_40" formatted="false">Root check</string>
+    <string name="device_label_41" formatted="false">Boot integrity</string>
+    <string name="device_label_42" formatted="false">CPU times</string>
+    <string name="device_label_43" formatted="false">GPU times</string>
+    <string name="device_label_44" formatted="false">Storage health</string>
+    <string name="device_label_45" formatted="false">Display test</string>
+    <string name="device_label_46" formatted="false">Multitouch</string>
+    <string name="device_label_47" formatted="false">Brightness</string>
+    <string name="device_label_48" formatted="false">Buttons</string>
+    <string name="device_label_49" formatted="false">Vibration</string>
+    <string name="device_label_50" formatted="false">Speakers</string>
+    <string name="device_label_51" formatted="false">Earpiece</string>
+    <string name="device_label_52" formatted="false">Microphone</string>
+    <string name="device_label_53" formatted="false">Flashlight</string>
+    <string name="device_label_54" formatted="false">Camera test</string>
+    <string name="device_label_55" formatted="false">Accelerometer</string>
+    <string name="device_label_56" formatted="false">Gyroscope</string>
+    <string name="device_label_57" formatted="false">Light sensor</string>
+    <string name="device_label_58" formatted="false">Proximity</string>
+    <string name="device_label_59" formatted="false">Magnetic field</string>
+    <string name="device_label_60" formatted="false">Headset</string>
+    <string name="device_label_61" formatted="false">Charging</string>
+    <string name="device_label_62" formatted="false">Biometric scanner</string>
+    <string name="device_label_63" formatted="false">Processor</string>
+    <string name="device_label_64" formatted="false">CPU frequencies</string>
+    <string name="device_label_65" formatted="false">CPU information</string>
+    <string name="device_label_66" formatted="false">Graphics</string>
+    <string name="device_label_67" formatted="false">Memory and storage</string>
+    <string name="device_label_68" formatted="false">Kernel memory</string>
+    <string name="device_label_69" formatted="false">Audio devices</string>
+    <string name="device_label_70" formatted="false">Media codecs</string>
+    <string name="device_label_71" formatted="false">Hardware features</string>
+    <string name="device_label_72" formatted="false">Device</string>
+    <string name="device_label_73" formatted="false">Android</string>
+    <string name="device_label_74" formatted="false">Runtime</string>
+    <string name="device_label_75" formatted="false">Root and privileged access</string>
+    <string name="device_label_76" formatted="false">Connection</string>
+    <string name="device_label_77" formatted="false">Wi-Fi</string>
+    <string name="device_label_78" formatted="false">Mobile network</string>
+    <string name="device_label_79" formatted="false">Traffic since boot</string>
+    <string name="device_label_80" formatted="false">Manufacturer</string>
+    <string name="device_label_81" formatted="false">Brand</string>
+    <string name="device_label_82" formatted="false">Model</string>
+    <string name="device_label_83" formatted="false">Product</string>
+    <string name="device_label_84" formatted="false">Board</string>
+    <string name="device_label_85" formatted="false">Bootloader</string>
+    <string name="device_label_86" formatted="false">Version</string>
+    <string name="device_label_87" formatted="false">API level</string>
+    <string name="device_label_88" formatted="false">Security patch</string>
+    <string name="device_label_89" formatted="false">Build</string>
+    <string name="device_label_90" formatted="false">Build ID</string>
+    <string name="device_label_91" formatted="false">Fingerprint</string>
+    <string name="device_label_92" formatted="false">Build type</string>
+    <string name="device_label_93" formatted="false">Tags</string>
+    <string name="device_label_94" formatted="false">Kernel</string>
+    <string name="device_label_95" formatted="false">Time zone</string>
+    <string name="device_label_96" formatted="false">Uptime</string>
+    <string name="device_label_97" formatted="false">Awake time</string>
+    <string name="device_label_98" formatted="false">Deep sleep since boot</string>
+    <string name="device_label_99" formatted="false">Power saving</string>
+    <string name="device_label_100" formatted="false">Interactive</string>
+    <string name="device_label_101" formatted="false">Thermal status</string>
+    <string name="device_label_102" formatted="false">ADB enabled</string>
+    <string name="device_label_103" formatted="false">Developer options</string>
+    <string name="device_label_104" formatted="false">SoC manufacturer</string>
+    <string name="device_label_105" formatted="false">SoC model</string>
+    <string name="device_label_106" formatted="false">Cores</string>
+    <string name="device_label_107" formatted="false">Architecture</string>
+    <string name="device_label_108" formatted="false">64-bit ABIs</string>
+    <string name="device_label_109" formatted="false">Resolution</string>
+    <string name="device_label_110" formatted="false">Refresh rate</string>
+    <string name="device_label_111" formatted="false">Density</string>
+    <string name="device_label_112" formatted="false">Logical density</string>
+    <string name="device_label_113" formatted="false">Wide color gamut</string>
+    <string name="device_label_114" formatted="false">Supported modes</string>
+    <string name="device_label_115" formatted="false">Java heap limit</string>
+    <string name="device_label_116" formatted="false">Internal storage</string>
+    <string name="device_label_117" formatted="false">Available storage</string>
+    <string name="device_label_118" formatted="false">Page size</string>
+    <string name="device_label_119" formatted="false">External volumes</string>
+    <string name="device_label_120" formatted="false">Transport</string>
+    <string name="device_label_121" formatted="false">Internet validated</string>
+    <string name="device_label_122" formatted="false">Metered</string>
+    <string name="device_label_123" formatted="false">Downstream estimate</string>
+    <string name="device_label_124" formatted="false">Upstream estimate</string>
+    <string name="device_label_125" formatted="false">Interface</string>
+    <string name="device_label_126" formatted="false">Addresses</string>
+    <string name="device_label_127" formatted="false">Routes</string>
+    <string name="device_label_128" formatted="false">Enabled</string>
+    <string name="device_label_129" formatted="false">SSID</string>
+    <string name="device_label_130" formatted="false">BSSID</string>
+    <string name="device_label_131" formatted="false">Signal</string>
+    <string name="device_label_132" formatted="false">Link speed</string>
+    <string name="device_label_133" formatted="false">Frequency</string>
+    <string name="device_label_134" formatted="false">Received</string>
+    <string name="device_label_135" formatted="false">Sent</string>
+    <string name="device_label_136" formatted="false">Mobile received</string>
+    <string name="device_label_137" formatted="false">Mobile sent</string>
+    <string name="device_label_138" formatted="false">This app received</string>
+    <string name="device_label_139" formatted="false">This app sent</string>
+    <string name="device_label_140" formatted="false">Operator</string>
+    <string name="device_label_141" formatted="false">Country</string>
+    <string name="device_label_142" formatted="false">SIM operator</string>
+    <string name="device_label_143" formatted="false">SIM state</string>
+    <string name="device_label_144" formatted="false">Phone type</string>
+    <string name="device_label_145" formatted="false">Roaming</string>
+    <string name="device_label_146" formatted="false">Vendor</string>
+    <string name="device_label_147" formatted="false">Type</string>
+    <string name="device_label_148" formatted="false">Range</string>
+    <string name="device_label_149" formatted="false">Power</string>
+    <string name="device_label_150" formatted="false">Minimum delay</string>
+    <string name="device_label_151" formatted="false">Wake-up</string>
+    <string name="device_label_152" formatted="false">Reporting mode</string>
+    <string name="device_label_153" formatted="false">Status</string>
+    <string name="device_label_154" formatted="false">Access</string>
+    <string name="device_label_155" formatted="false">Scope</string>
+    <string name="device_label_156" formatted="false">Unavailable</string>
+    <string name="device_label_157" formatted="false">Disconnected</string>
+    <string name="device_label_158" formatted="false">Yes</string>
+    <string name="device_label_159" formatted="false">No</string>
+    <string name="device_label_160" formatted="false">Normal</string>
+    <string name="device_label_161" formatted="false">Live sensor readings</string>
+    <string name="device_label_162" formatted="false">Waiting for sensor events…</string>
+    <string name="device_label_163" formatted="false">Search information</string>
+    <string name="device_label_164" formatted="false">Search apps or packages</string>
+    <string name="device_label_165" formatted="false">User</string>
+    <string name="device_label_166" formatted="false">All</string>
+    <string name="device_label_167" formatted="false">App settings</string>
+    <string name="device_label_168" formatted="false">Close</string>
+    <string name="device_label_169" formatted="false">OK</string>
+    <string name="device_label_170" formatted="false">Open test</string>
+    <string name="device_label_171" formatted="false">Open tool</string>
+    <string name="device_label_172" formatted="false">Run test</string>
+    <string name="device_label_173" formatted="false">Toggle flash</string>
+    <string name="device_label_174" formatted="false">Ready</string>
+    <string name="device_label_175" formatted="false">Appearance</string>
+    <string name="device_label_176" formatted="false">Android access</string>
+    <string name="device_label_177" formatted="false">App permissions</string>
+    <string name="device_label_178" formatted="false">Usage access</string>
+    <string name="device_label_179" formatted="false">Display over other apps</string>
+    <string name="device_label_180" formatted="false">Share report</string>
+    <string name="device_label_181" formatted="false">Export a device report</string>
+    <string name="device_label_182" formatted="false">Choose where to save</string>
+    <string name="device_label_183" formatted="false">Copy quick specs</string>
+    <string name="device_label_184" formatted="false">Copied to clipboard</string>
+    <string name="device_label_185" formatted="false">Report exported</string>
+    <string name="device_label_186" formatted="false">Camera images are not saved</string>
+    <string name="device_label_187" formatted="false">Start recording</string>
+    <string name="device_label_188" formatted="false">Stop recording</string>
+    <string name="device_label_189" formatted="false">Play recording</string>
+    <string name="device_label_190" formatted="false">Scan Wi-Fi</string>
+    <string name="device_label_191" formatted="false">Scan Bluetooth</string>
+    <string name="device_label_192" formatted="false">Scan local network</string>
+    <string name="device_label_193" formatted="false">Check connectivity</string>
+    <string name="device_label_194" formatted="false">Hostname or IP</string>
+    <string name="device_label_195" formatted="false">Cancel</string>
+    <string name="device_label_196" formatted="false">Cancelled</string>
+    <string name="device_label_197" formatted="false">Complete</string>
+    <string name="device_label_198" formatted="false">Start overlay</string>
+    <string name="device_label_199" formatted="false">Stop</string>
+    <string name="device_label_200" formatted="false">Floating monitor</string>
+    <string name="device_label_201" formatted="false">Live system graphs</string>
+    <string name="device_label_202" formatted="false">Home screen widget</string>
+    <string name="device_label_203" formatted="false">Add dashboard widget</string>
+    <string name="device_label_204" formatted="false">Refresh widgets</string>
+    <string name="device_label_205" formatted="false">Battery history</string>
+    <string name="device_label_206" formatted="false">Copy history CSV</string>
+    <string name="device_label_207" formatted="false">Enable usage access</string>
+    <string name="device_label_208" formatted="false">Refresh</string>
+    <string name="device_label_209" formatted="false">Location settings</string>
+    <string name="device_label_210" formatted="false">No data reported by this device.</string>
+    <string name="device_label_211" formatted="false">No USB devices connected</string>
+    <string name="device_label_212" formatted="false">Run benchmark</string>
+    <string name="device_label_213" formatted="false">Local performance benchmark</string>
+    <string name="device_label_214" formatted="false">Finished runs will appear here.</string>
+    <string name="device_label_215" formatted="false">This tool needs permission</string>
+    <string name="device_label_216" formatted="false">Grant permission</string>
+    <string name="device_label_217" formatted="false">Open app settings</string>
+    <string name="device_label_218" formatted="false">Open Shizuku</string>
+    <string name="device_label_219" formatted="false">Grant access</string>
+    <string name="device_label_220" formatted="false">Connect</string>
+    <string name="device_label_221" formatted="false">Thermal sensors</string>
+    <string name="device_label_222" formatted="false">All processes</string>
+    <string name="device_label_223" formatted="false">Device logs</string>
+    <string name="device_label_224" formatted="false">Battery service</string>
+    <string name="device_label_225" formatted="false">Root access check</string>
+    <string name="device_label_226" formatted="false">Test root access</string>
+    <string name="device_label_227" formatted="false">Boot and identity signals</string>
+    <string name="device_label_228" formatted="false">Hardware verification</string>
+    <string name="device_label_229" formatted="false">Verified boot state</string>
+    <string name="device_label_230" formatted="false">Flash locked</string>
+    <string name="device_label_231" formatted="false">Device state</string>
+    <string name="device_label_232" formatted="false">Build fingerprint</string>
+    <string name="device_label_233" formatted="false">Build tags</string>
+    <string name="device_label_234" formatted="false">Operating System</string>
+    <string name="device_label_235" formatted="false">CPU Configuration</string>
+    <string name="device_label_236" formatted="false">IP configuration</string>
+    <string name="device_label_237" formatted="false">Battery details</string>
+    <string name="device_label_238" formatted="false">Reports</string>
+    <string name="device_label_239" formatted="false">Visible</string>
+    <string name="device_label_240" formatted="false">Temperature</string>
+    <string name="device_label_241" formatted="false">Pressure</string>
+    <string name="device_label_242" formatted="false">Gravity</string>
+    <string name="device_label_243" formatted="false">Linear acceleration</string>
+    <string name="device_label_244" formatted="false">Rotation vector</string>
+    <string name="device_label_245" formatted="false">Humidity</string>
+</resources>

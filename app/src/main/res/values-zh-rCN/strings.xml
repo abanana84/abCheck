@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">电池健康与循环</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">电池健康</string>
     <string name="section_status">状态</string>
     <string name="status_charging">充电中</string>

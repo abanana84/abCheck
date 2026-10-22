@@ -68,6 +68,7 @@ import com.abanana.abattery.util.formatBatteryCycleCount
 fun BatteryScreen(
     viewModel: BatteryViewModel = hiltViewModel(),
     themeMode: ThemeMode = ThemeMode.SYSTEM,
+    showTopBar: Boolean = true,
     onThemeModeChange: (ThemeMode) -> Unit = {},
 ) {
     val info by viewModel.batteryInfo.collectAsStateWithLifecycle()
@@ -76,7 +77,7 @@ fun BatteryScreen(
     val c = AppTheme.colors
 
     Column(modifier = Modifier.fillMaxSize().background(c.background)) {
-        ACheckTopBar(
+        if (showTopBar) ACheckTopBar(
             themeMode = themeMode,
             onThemeModeChange = onThemeModeChange,
         )

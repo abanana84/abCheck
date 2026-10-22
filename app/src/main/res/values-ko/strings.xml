@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">배터리 건강 및 사이클</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">배터리 상태</string>
     <string name="section_status">상태</string>
     <string name="status_charging">충전 중</string>

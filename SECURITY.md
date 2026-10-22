@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes are provided for the latest released version of ABattery.
+Security fixes are provided for the latest released version of abCheck.
 
 ## Reporting a vulnerability
 

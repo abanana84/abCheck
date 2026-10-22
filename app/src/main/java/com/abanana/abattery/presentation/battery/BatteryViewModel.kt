@@ -7,6 +7,8 @@ import com.abanana.abattery.domain.model.BatteryInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,8 +28,11 @@ class BatteryViewModel @Inject constructor(
 
     private val historyBuffer = ArrayDeque<Float>(120)
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
+    private var samplingJob: Job? = null
+
+    fun startSampling() {
+        if (samplingJob?.isActive == true) return
+        samplingJob = viewModelScope.launch(Dispatchers.IO) {
             while (isActive) {
                 try {
                     val info = batteryDataSource.getBatteryInfo()
@@ -38,10 +43,17 @@ class BatteryViewModel @Inject constructor(
                         historyBuffer.removeFirst()
                     }
                     _currentHistoryMa.value = historyBuffer.toList()
+                } catch (e: CancellationException) {
+                    throw e
                 } catch (_: Exception) {
                 }
                 delay(500L)
             }
         }
+    }
+
+    fun stopSampling() {
+        samplingJob?.cancel()
+        samplingJob = null
     }
 }

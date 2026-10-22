@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.abanana.abattery.presentation.battery.BatteryScreen
+import com.abanana.abattery.presentation.device.DeviceScreen
 import com.abanana.abattery.ui.theme.ABatteryTheme
 import com.abanana.abattery.ui.theme.AppTheme
 import com.abanana.abattery.ui.theme.ThemeMode
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                                 .padding(contentPadding)
                                 .background(AppTheme.colors.background),
                         ) {
-                            BatteryScreen(
+                            DeviceScreen(
                                 themeMode = themeMode,
                                 onThemeModeChange = onThemeModeChange,
                             )
@@ -77,6 +77,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun dispatchKeyEvent(event: android.view.KeyEvent): Boolean {
+        if (event.action == android.view.KeyEvent.ACTION_DOWN) {
+            com.abanana.abattery.presentation.device.KeyDiagnostics.lastKey.value =
+                "${android.view.KeyEvent.keyCodeToString(event.keyCode)} · ${System.currentTimeMillis()}"
+        }
+        return super.dispatchKeyEvent(event)
     }
 
     private companion object {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Здоровье батареи и циклы</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">Состояние батареи</string>
     <string name="section_status">Статус</string>
     <string name="status_charging">Зарядка</string>

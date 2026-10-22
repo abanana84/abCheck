@@ -5,3 +5,4 @@
 
 -keep class com.abanana.abattery.ABatteryApplication { *; }
 -keep class com.abanana.abattery.presentation.main.MainActivity { *; }
+-keep class com.abanana.abattery.diagnostics.PrivilegedReadService { *; }

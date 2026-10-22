@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sức khỏe pin &amp; chu kỳ</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">Sức khỏe pin</string>
     <string name="section_status">Trạng thái</string>
     <string name="status_charging">Đang sạc</string>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="device_label_0" formatted="false">Tổng quan</string>
+    <string name="device_label_1" formatted="false">Phần cứng</string>
+    <string name="device_label_2" formatted="false">Hệ thống</string>
+    <string name="device_label_3" formatted="false">Pin</string>
+    <string name="device_label_4" formatted="false">Mạng</string>
+    <string name="device_label_5" formatted="false">Ứng dụng</string>
+    <string name="device_label_6" formatted="false">Camera</string>
+    <string name="device_label_7" formatted="false">Cảm biến</string>
+    <string name="device_label_8" formatted="false">Kiểm tra</string>
+    <string name="device_label_9" formatted="false">Công cụ</string>
+    <string name="device_label_10" formatted="false">Tiện ích</string>
+    <string name="device_label_11" formatted="false">Theo dõi</string>
+    <string name="device_label_12" formatted="false">Hiệu năng</string>
+    <string name="device_label_13" formatted="false">Theo dõi pin</string>
+    <string name="device_label_14" formatted="false">Báo cáo thiết bị</string>
+    <string name="device_label_15" formatted="false">Cài đặt</string>
+    <string name="device_label_16" formatted="false">Chính sách quyền riêng tư</string>
+    <string name="device_label_17" formatted="false">Ngôn ngữ</string>
+    <string name="device_label_18" formatted="false">Trạng thái CPU</string>
+    <string name="device_label_19" formatted="false">CPU ảo</string>
+    <string name="device_label_20" formatted="false">Ngừng hoạt động</string>
+    <string name="device_label_21" formatted="false">Không đọc được xung nhịp</string>
+    <string name="device_label_22" formatted="false">RAM</string>
+    <string name="device_label_23" formatted="false">Bộ nhớ lưu trữ</string>
+    <string name="device_label_24" formatted="false">Màn hình</string>
+    <string name="device_label_25" formatted="false">Phân tích CPU</string>
+    <string name="device_label_26" formatted="false">Đồ thị hệ thống</string>
+    <string name="device_label_27" formatted="false">Nhiệt độ</string>
+    <string name="device_label_28" formatted="false">Quét Wi-Fi</string>
+    <string name="device_label_29" formatted="false">Quét Bluetooth</string>
+    <string name="device_label_30" formatted="false">USB</string>
+    <string name="device_label_31" formatted="false">Lưu lượng mạng</string>
+    <string name="device_label_32" formatted="false">Thời gian sử dụng</string>
+    <string name="device_label_33" formatted="false">Quản lý quyền ứng dụng</string>
+    <string name="device_label_34" formatted="false">Tiến trình</string>
+    <string name="device_label_35" formatted="false">Nhật ký ứng dụng</string>
+    <string name="device_label_36" formatted="false">Thông tin OpenGL</string>
+    <string name="device_label_37" formatted="false">Kiểm tra kết nối</string>
+    <string name="device_label_38" formatted="false">Quét mạng nội bộ</string>
+    <string name="device_label_39" formatted="false">Chẩn đoán qua Shizuku</string>
+    <string name="device_label_40" formatted="false">Kiểm tra root</string>
+    <string name="device_label_41" formatted="false">Tính toàn vẹn khởi động</string>
+    <string name="device_label_42" formatted="false">Thời gian CPU</string>
+    <string name="device_label_43" formatted="false">Thời gian GPU</string>
+    <string name="device_label_44" formatted="false">Tình trạng bộ nhớ</string>
+    <string name="device_label_45" formatted="false">Kiểm tra màn hình</string>
+    <string name="device_label_46" formatted="false">Cảm ứng đa điểm</string>
+    <string name="device_label_47" formatted="false">Độ sáng</string>
+    <string name="device_label_48" formatted="false">Phím cứng</string>
+    <string name="device_label_49" formatted="false">Rung</string>
+    <string name="device_label_50" formatted="false">Loa ngoài</string>
+    <string name="device_label_51" formatted="false">Loa thoại</string>
+    <string name="device_label_52" formatted="false">Micro</string>
+    <string name="device_label_53" formatted="false">Đèn pin</string>
+    <string name="device_label_54" formatted="false">Kiểm tra camera</string>
+    <string name="device_label_55" formatted="false">Gia tốc kế</string>
+    <string name="device_label_56" formatted="false">Con quay hồi chuyển</string>
+    <string name="device_label_57" formatted="false">Cảm biến ánh sáng</string>
+    <string name="device_label_58" formatted="false">Cảm biến tiệm cận</string>
+    <string name="device_label_59" formatted="false">Từ trường</string>
+    <string name="device_label_60" formatted="false">Tai nghe</string>
+    <string name="device_label_61" formatted="false">Sạc pin</string>
+    <string name="device_label_62" formatted="false">Cảm biến sinh trắc học</string>
+    <string name="device_label_63" formatted="false">Bộ xử lý</string>
+    <string name="device_label_64" formatted="false">Tần số CPU</string>
+    <string name="device_label_65" formatted="false">Thông tin CPU</string>
+    <string name="device_label_66" formatted="false">Đồ họa</string>
+    <string name="device_label_67" formatted="false">RAM và bộ nhớ</string>
+    <string name="device_label_68" formatted="false">Bộ nhớ hệ điều hành</string>
+    <string name="device_label_69" formatted="false">Thiết bị âm thanh</string>
+    <string name="device_label_70" formatted="false">Bộ mã hóa âm thanh và video</string>
+    <string name="device_label_71" formatted="false">Tính năng phần cứng</string>
+    <string name="device_label_72" formatted="false">Thiết bị</string>
+    <string name="device_label_73" formatted="false">Android</string>
+    <string name="device_label_74" formatted="false">Trạng thái hoạt động</string>
+    <string name="device_label_75" formatted="false">Root và quyền nâng cao</string>
+    <string name="device_label_76" formatted="false">Kết nối</string>
+    <string name="device_label_77" formatted="false">Wi-Fi</string>
+    <string name="device_label_78" formatted="false">Mạng di động</string>
+    <string name="device_label_79" formatted="false">Lưu lượng từ khi khởi động</string>
+    <string name="device_label_80" formatted="false">Nhà sản xuất</string>
+    <string name="device_label_81" formatted="false">Thương hiệu</string>
+    <string name="device_label_82" formatted="false">Mẫu máy</string>
+    <string name="device_label_83" formatted="false">Sản phẩm</string>
+    <string name="device_label_84" formatted="false">Bo mạch</string>
+    <string name="device_label_85" formatted="false">Bộ nạp khởi động</string>
+    <string name="device_label_86" formatted="false">Phiên bản</string>
+    <string name="device_label_87" formatted="false">Cấp API</string>
+    <string name="device_label_88" formatted="false">Bản vá bảo mật</string>
+    <string name="device_label_89" formatted="false">Bản dựng</string>
+    <string name="device_label_90" formatted="false">Mã bản dựng</string>
+    <string name="device_label_91" formatted="false">Dấu vân tay bản dựng</string>
+    <string name="device_label_92" formatted="false">Loại bản dựng</string>
+    <string name="device_label_93" formatted="false">Thẻ bản dựng</string>
+    <string name="device_label_94" formatted="false">Nhân hệ điều hành</string>
+    <string name="device_label_95" formatted="false">Múi giờ</string>
+    <string name="device_label_96" formatted="false">Thời gian từ khi khởi động</string>
+    <string name="device_label_97" formatted="false">Thời gian hoạt động</string>
+    <string name="device_label_98" formatted="false">Thời gian ngủ sâu</string>
+    <string name="device_label_99" formatted="false">Tiết kiệm pin</string>
+    <string name="device_label_100" formatted="false">Màn hình đang hoạt động</string>
+    <string name="device_label_101" formatted="false">Trạng thái nhiệt</string>
+    <string name="device_label_102" formatted="false">Đã bật ADB</string>
+    <string name="device_label_103" formatted="false">Tùy chọn nhà phát triển</string>
+    <string name="device_label_104" formatted="false">Nhà sản xuất SoC</string>
+    <string name="device_label_105" formatted="false">Mẫu SoC</string>
+    <string name="device_label_106" formatted="false">Số lõi</string>
+    <string name="device_label_107" formatted="false">Kiến trúc</string>
+    <string name="device_label_108" formatted="false">ABI 64 bit</string>
+    <string name="device_label_109" formatted="false">Độ phân giải</string>
+    <string name="device_label_110" formatted="false">Tần số quét</string>
+    <string name="device_label_111" formatted="false">Mật độ điểm ảnh</string>
+    <string name="device_label_112" formatted="false">Mật độ logic</string>
+    <string name="device_label_113" formatted="false">Dải màu rộng</string>
+    <string name="device_label_114" formatted="false">Chế độ hỗ trợ</string>
+    <string name="device_label_115" formatted="false">Giới hạn bộ nhớ Java</string>
+    <string name="device_label_116" formatted="false">Bộ nhớ trong</string>
+    <string name="device_label_117" formatted="false">Bộ nhớ trống</string>
+    <string name="device_label_118" formatted="false">Kích thước trang</string>
+    <string name="device_label_119" formatted="false">Bộ nhớ ngoài</string>
+    <string name="device_label_120" formatted="false">Loại kết nối</string>
+    <string name="device_label_121" formatted="false">Đã xác nhận Internet</string>
+    <string name="device_label_122" formatted="false">Tính phí dữ liệu</string>
+    <string name="device_label_123" formatted="false">Ước tính tốc độ tải xuống</string>
+    <string name="device_label_124" formatted="false">Ước tính tốc độ tải lên</string>
+    <string name="device_label_125" formatted="false">Giao diện mạng</string>
+    <string name="device_label_126" formatted="false">Địa chỉ</string>
+    <string name="device_label_127" formatted="false">Định tuyến</string>
+    <string name="device_label_128" formatted="false">Đang bật</string>
+    <string name="device_label_129" formatted="false">SSID</string>
+    <string name="device_label_130" formatted="false">BSSID</string>
+    <string name="device_label_131" formatted="false">Tín hiệu</string>
+    <string name="device_label_132" formatted="false">Tốc độ liên kết</string>
+    <string name="device_label_133" formatted="false">Tần số</string>
+    <string name="device_label_134" formatted="false">Đã nhận</string>
+    <string name="device_label_135" formatted="false">Đã gửi</string>
+    <string name="device_label_136" formatted="false">Dữ liệu di động nhận</string>
+    <string name="device_label_137" formatted="false">Dữ liệu di động gửi</string>
+    <string name="device_label_138" formatted="false">Ứng dụng này nhận</string>
+    <string name="device_label_139" formatted="false">Ứng dụng này gửi</string>
+    <string name="device_label_140" formatted="false">Nhà mạng</string>
+    <string name="device_label_141" formatted="false">Quốc gia</string>
+    <string name="device_label_142" formatted="false">Nhà mạng SIM</string>
+    <string name="device_label_143" formatted="false">Trạng thái SIM</string>
+    <string name="device_label_144" formatted="false">Loại điện thoại</string>
+    <string name="device_label_145" formatted="false">Chuyển vùng</string>
+    <string name="device_label_146" formatted="false">Nhà cung cấp</string>
+    <string name="device_label_147" formatted="false">Loại</string>
+    <string name="device_label_148" formatted="false">Phạm vi</string>
+    <string name="device_label_149" formatted="false">Công suất</string>
+    <string name="device_label_150" formatted="false">Độ trễ tối thiểu</string>
+    <string name="device_label_151" formatted="false">Đánh thức thiết bị</string>
+    <string name="device_label_152" formatted="false">Chế độ báo cáo</string>
+    <string name="device_label_153" formatted="false">Trạng thái</string>
+    <string name="device_label_154" formatted="false">Quyền truy cập</string>
+    <string name="device_label_155" formatted="false">Phạm vi</string>
+    <string name="device_label_156" formatted="false">Không khả dụng</string>
+    <string name="device_label_157" formatted="false">Đã ngắt kết nối</string>
+    <string name="device_label_158" formatted="false">Có</string>
+    <string name="device_label_159" formatted="false">Không</string>
+    <string name="device_label_160" formatted="false">Bình thường</string>
+    <string name="device_label_161" formatted="false">Dữ liệu cảm biến trực tiếp</string>
+    <string name="device_label_162" formatted="false">Đang chờ dữ liệu cảm biến…</string>
+    <string name="device_label_163" formatted="false">Tìm kiếm thông tin</string>
+    <string name="device_label_164" formatted="false">Tìm ứng dụng hoặc tên gói</string>
+    <string name="device_label_165" formatted="false">Người dùng</string>
+    <string name="device_label_166" formatted="false">Tất cả</string>
+    <string name="device_label_167" formatted="false">Cài đặt ứng dụng</string>
+    <string name="device_label_168" formatted="false">Đóng</string>
+    <string name="device_label_169" formatted="false">OK</string>
+    <string name="device_label_170" formatted="false">Mở bài kiểm tra</string>
+    <string name="device_label_171" formatted="false">Mở công cụ</string>
+    <string name="device_label_172" formatted="false">Chạy kiểm tra</string>
+    <string name="device_label_173" formatted="false">Bật hoặc tắt đèn pin</string>
+    <string name="device_label_174" formatted="false">Sẵn sàng</string>
+    <string name="device_label_175" formatted="false">Giao diện</string>
+    <string name="device_label_176" formatted="false">Quyền truy cập Android</string>
+    <string name="device_label_177" formatted="false">Quyền ứng dụng</string>
+    <string name="device_label_178" formatted="false">Quyền truy cập sử dụng</string>
+    <string name="device_label_179" formatted="false">Hiển thị trên ứng dụng khác</string>
+    <string name="device_label_180" formatted="false">Chia sẻ báo cáo</string>
+    <string name="device_label_181" formatted="false">Xuất báo cáo thiết bị</string>
+    <string name="device_label_182" formatted="false">Chọn nơi lưu</string>
+    <string name="device_label_183" formatted="false">Sao chép thông số chính</string>
+    <string name="device_label_184" formatted="false">Đã sao chép</string>
+    <string name="device_label_185" formatted="false">Đã xuất báo cáo</string>
+    <string name="device_label_186" formatted="false">Không lưu hình ảnh camera</string>
+    <string name="device_label_187" formatted="false">Bắt đầu ghi</string>
+    <string name="device_label_188" formatted="false">Dừng ghi</string>
+    <string name="device_label_189" formatted="false">Phát bản ghi</string>
+    <string name="device_label_190" formatted="false">Quét Wi-Fi</string>
+    <string name="device_label_191" formatted="false">Quét Bluetooth</string>
+    <string name="device_label_192" formatted="false">Quét mạng nội bộ</string>
+    <string name="device_label_193" formatted="false">Kiểm tra kết nối</string>
+    <string name="device_label_194" formatted="false">Tên miền hoặc IP</string>
+    <string name="device_label_195" formatted="false">Hủy</string>
+    <string name="device_label_196" formatted="false">Đã hủy</string>
+    <string name="device_label_197" formatted="false">Hoàn tất</string>
+    <string name="device_label_198" formatted="false">Bật cửa sổ nổi</string>
+    <string name="device_label_199" formatted="false">Dừng</string>
+    <string name="device_label_200" formatted="false">Cửa sổ theo dõi nổi</string>
+    <string name="device_label_201" formatted="false">Đồ thị hệ thống trực tiếp</string>
+    <string name="device_label_202" formatted="false">Tiện ích màn hình chính</string>
+    <string name="device_label_203" formatted="false">Thêm tiện ích tổng quan</string>
+    <string name="device_label_204" formatted="false">Làm mới tiện ích</string>
+    <string name="device_label_205" formatted="false">Lịch sử pin</string>
+    <string name="device_label_206" formatted="false">Sao chép lịch sử dạng CSV</string>
+    <string name="device_label_207" formatted="false">Bật quyền truy cập sử dụng</string>
+    <string name="device_label_208" formatted="false">Làm mới</string>
+    <string name="device_label_209" formatted="false">Cài đặt vị trí</string>
+    <string name="device_label_210" formatted="false">Thiết bị không cung cấp dữ liệu.</string>
+    <string name="device_label_211" formatted="false">Chưa kết nối thiết bị USB</string>
+    <string name="device_label_212" formatted="false">Đo hiệu năng</string>
+    <string name="device_label_213" formatted="false">Đo hiệu năng cục bộ</string>
+    <string name="device_label_214" formatted="false">Kết quả đo sẽ xuất hiện tại đây.</string>
+    <string name="device_label_215" formatted="false">Công cụ này cần quyền truy cập</string>
+    <string name="device_label_216" formatted="false">Cấp quyền</string>
+    <string name="device_label_217" formatted="false">Mở cài đặt ứng dụng</string>
+    <string name="device_label_218" formatted="false">Mở Shizuku</string>
+    <string name="device_label_219" formatted="false">Cấp quyền truy cập</string>
+    <string name="device_label_220" formatted="false">Kết nối</string>
+    <string name="device_label_221" formatted="false">Cảm biến nhiệt</string>
+    <string name="device_label_222" formatted="false">Tất cả tiến trình</string>
+    <string name="device_label_223" formatted="false">Nhật ký thiết bị</string>
+    <string name="device_label_224" formatted="false">Dịch vụ pin</string>
+    <string name="device_label_225" formatted="false">Kiểm tra quyền root</string>
+    <string name="device_label_226" formatted="false">Thử quyền root</string>
+    <string name="device_label_227" formatted="false">Thông tin khởi động và nhận dạng</string>
+    <string name="device_label_228" formatted="false">Xác minh phần cứng</string>
+    <string name="device_label_229" formatted="false">Trạng thái khởi động đã xác minh</string>
+    <string name="device_label_230" formatted="false">Khóa flash</string>
+    <string name="device_label_231" formatted="false">Trạng thái thiết bị</string>
+    <string name="device_label_232" formatted="false">Dấu vân tay bản dựng</string>
+    <string name="device_label_233" formatted="false">Thẻ bản dựng</string>
+    <string name="device_label_234" formatted="false">Hệ điều hành</string>
+    <string name="device_label_235" formatted="false">Cấu hình CPU</string>
+    <string name="device_label_236" formatted="false">Cấu hình IP</string>
+    <string name="device_label_237" formatted="false">Chi tiết pin</string>
+    <string name="device_label_238" formatted="false">Báo cáo</string>
+    <string name="device_label_239" formatted="false">Hiển thị</string>
+    <string name="device_label_240" formatted="false">Nhiệt độ</string>
+    <string name="device_label_241" formatted="false">Áp suất</string>
+    <string name="device_label_242" formatted="false">Trọng lực</string>
+    <string name="device_label_243" formatted="false">Gia tốc tuyến tính</string>
+    <string name="device_label_244" formatted="false">Véc-tơ xoay</string>
+    <string name="device_label_245" formatted="false">Độ ẩm</string>
+</resources>

@@ -1,1 +1,1 @@
-Private battery health, capacity and cycle monitor for Android
+Device info, hardware tests, system monitoring and battery diagnostics

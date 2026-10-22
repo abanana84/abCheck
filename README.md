@@ -1,110 +1,89 @@
-<p align="center">
-  <img src="docs/images/feature-graphic.png" alt="ABattery - Battery Health and Cycles" width="100%" />
-</p>
-
-<h1 align="center">ABattery - Battery Health & Cycles</h1>
+<h1 align="center">abCheck</h1>
+<p align="center"><strong>Device & System diagnostics for Android</strong><br />Formerly ABattery / Battery Health & Cycles</p>
 
 <p align="center">
-  A privacy-friendly, open-source Android app for understanding battery health, charging behavior, capacity, and cycle count.
-</p>
-
-<p align="center">
-  <a href="https://github.com/abanana84/abattery/actions/workflows/android.yml"><img alt="Android CI" src="https://github.com/abanana84/abattery/actions/workflows/android.yml/badge.svg" /></a>
-  <a href="https://play.google.com/store/apps/details?id=com.abanana.abattery"><img alt="Google Play" src="https://img.shields.io/badge/Google_Play-Download-414141?logo=googleplay&logoColor=white" /></a>
-  <a href="https://github.com/abanana84/abattery/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/abanana84/abattery" /></a>
-  <a href="https://github.com/abanana84/abattery/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/abanana84/abattery?logo=github&label=Stars" /></a>
-  <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/abanana84/abattery" /></a>
+  <a href="https://github.com/abanana84/abCheck/actions/workflows/android.yml"><img alt="Android CI" src="https://github.com/abanana84/abCheck/actions/workflows/android.yml/badge.svg" /></a>
+  <a href="https://play.google.com/store/apps/details?id=com.abanana.abattery"><img alt="Google Play" src="https://img.shields.io/badge/Google_Play-App_page-414141?logo=googleplay&logoColor=white" /></a>
+  <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/badge/License-Apache_2.0-blue" /></a>
   <img alt="Android 8.0+" src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white" />
 </p>
 
-<p align="center">
-  <strong><a href="https://play.google.com/store/apps/details?id=com.abanana.abattery">Get it on Google Play</a></strong>
-  &nbsp;&middot;&nbsp;
-  <a href="https://github.com/abanana84/abattery/issues/new?template=bug.yml">Report a bug</a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://github.com/abanana84/abattery/issues/new?template=feature.yml">Request a feature</a>
-  &nbsp;&middot;&nbsp;
-  <a href="docs/android-battery-data.md">How Android battery data works</a>
-</p>
+abCheck brings device information, hardware tests, live monitoring and battery diagnostics into one open-source Android app. No ads, analytics or account required. Core diagnostics work without root; optional Shizuku tools need a separate setup.
+
+> **Release status - 22 October 2026:** Version 1.2.0 (code 9) has been uploaded to Google Play and submitted for review. The screenshots and features below describe that update and the source on `main`. Play may still deliver the older battery-focused version until the update is approved. Existing GitHub releases 1.1.x are historical ABattery builds.
+
+[Google Play](https://play.google.com/store/apps/details?id=com.abanana.abattery) · [Report a bug](https://github.com/abanana84/abCheck/issues/new?template=bug.yml) · [Request a feature](https://github.com/abanana84/abCheck/issues/new?template=feature.yml) · [Privacy policy](PRIVACY.md)
+
+## What you can check
+
+| Area | Tools and information |
+| --- | --- |
+| Dashboard | CPU cores and available frequencies, RAM, storage and battery overview |
+| Hardware & system | Chipset, display, Android build, memory and device properties |
+| Battery | Level, temperature, voltage, current, power, available capacity and cycle signals, current chart and local recording |
+| Network | Connection information, user-started DNS/TCP connectivity tools, Wi-Fi, Bluetooth, GPS and USB diagnostics |
+| Apps, camera & sensors | Android-visible packages, camera capabilities, sensor details and live readings |
+| Interactive tests | Screen, multitouch, keys, audio, microphone, camera and sensor checks |
+| Monitoring & reports | Floating monitor, graphs, home-screen widgets and Text/JSON/HTML/PDF/PNG reports |
+| Local benchmarks | CPU, memory, storage and GPU workloads, repeated runs and saved history |
+
+Light, dark and system themes are supported. Existing battery screens retain 16 languages; the expanded diagnostic interface has English and Vietnamese labels, with English fallbacks where translations are missing.
+
+## Screenshots of 1.2.0
+
+Captured from the app on an Android emulator. Hardware values describe that emulator, not a physical phone.
 
 <p align="center">
-  <strong>If ABattery is useful on your device, <a href="https://github.com/abanana84/abattery">star the repository</a> to help more Android users discover it.</strong>
+  <img src="docs/images/abcheck-dashboard.png" alt="abCheck dashboard with virtual CPU cores, RAM, storage and battery" width="24%" />
+  <img src="docs/images/abcheck-hardware.png" alt="Hardware information" width="24%" />
+  <img src="docs/images/abcheck-system.png" alt="Android system information" width="24%" />
+  <img src="docs/images/abcheck-battery.png" alt="Battery overview" width="24%" />
 </p>
-
-## Why ABattery?
-
-Android exposes useful battery data across several APIs and device-specific system files. ABattery brings the available signals into one readable Material 3 dashboard, while clearly marking values that are estimated or unavailable.
-
-- Real-time battery level, charge status, temperature, voltage, current, and power
-- Reported or best-effort cycle count with estimated values clearly marked
-- Design capacity and full-charge capacity when the device exposes them
-- Live current chart for charging and discharging behavior
-- Light, dark, and system themes
-- 16 languages
-- No ads, analytics, account, or Internet permission
-- No runtime permission prompts
-
-## Screenshots
-
 <p align="center">
-  <img src="docs/images/dashboard-dark.jpg" alt="Dark dashboard" width="23%" />
-  <img src="docs/images/dashboard-light.jpg" alt="Light dashboard" width="23%" />
-  <img src="docs/images/battery-details.jpg" alt="Battery capacity and health details" width="23%" />
-  <img src="docs/images/language-picker.jpg" alt="Language picker" width="23%" />
+  <img src="docs/images/abcheck-network.png" alt="Network information" width="24%" />
+  <img src="docs/images/abcheck-camera.png" alt="Camera capabilities" width="24%" />
+  <img src="docs/images/abcheck-sensors.png" alt="Sensors" width="24%" />
+  <img src="docs/images/abcheck-tools.png" alt="Diagnostic tools" width="24%" />
 </p>
 
-## Device compatibility
+## Honest measurements and device limits
 
-Battery reporting varies significantly between Android versions and manufacturers. ABattery reads data from Android's battery APIs first, then uses available system information and local estimation as fallbacks.
+Android and manufacturers restrict access to some hardware data. Unavailable readings remain `N/A`; estimates are labeled. Emulator CPU frequencies are identified as virtual rather than presented as measured MHz. Historical battery cycles before installation cannot be reconstructed when the device does not expose them.
 
-Some devices hide capacity, cycle count, or charging limits. In those cases ABattery shows `N/A` instead of inventing a value. The app is a diagnostic tool, not a laboratory measurement or a replacement for manufacturer service tools.
+Local benchmark scores describe abCheck workloads; they are not interchangeable with other benchmark apps. Physical hardware tests, OEM-specific readings and behavior across Android versions still need real-device verification. There are no online rankings or signed Play Integrity verdicts in this version.
 
-Community reports currently confirm the app running on devices including the Google Pixel 7 with Android 17, Google Pixel 6a with GrapheneOS, and LG V40 with Android 10. See the [community-tested device list](docs/device-compatibility.md) for details.
+The [community-tested device list](docs/device-compatibility.md) records reports about earlier battery-focused versions. Those reports do not validate every tool introduced in 1.2.0. Read [how Android battery data works](docs/android-battery-data.md) for details about APIs and fallbacks.
 
-If a field behaves differently on your device, please open a [device compatibility report](https://github.com/abanana84/abattery/issues/new?template=device-compatibility.yml) with the phone model and Android version.
+## Privacy and permissions
+
+Diagnostics and history are processed locally. Camera, microphone, location, Bluetooth, usage access, notifications and overlay access are used by the corresponding tools. The floating monitor and battery recorder are user-started sessions with a visible notification and Stop action.
+
+Version 1.2.0 includes Internet permission for connectivity tools you choose to run. It does not include advertising or analytics SDKs. Reports leave the app only when you choose to export or share them. See the [privacy policy](PRIVACY.md) for the full permission and data-use details.
 
 ## Build from source
 
-### Requirements
-
-- Android Studio with Android SDK 36
-- JDK 17
-- Android 8.0 (API 26) or newer for the target device
-
-### Commands
+Requirements: JDK 17, Android SDK 36, and Android 8.0 (API 26) or newer on the target device.
 
 ```bash
-git clone https://github.com/abanana84/abattery.git
-cd abattery
-./gradlew assembleDebug
-```
-
-The debug APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
-
-Run the same checks used by CI:
-
-```bash
+git clone https://github.com/abanana84/abCheck.git
+cd abCheck
 ./gradlew testDebugUnitTest lintDebug assembleDebug
 ```
 
-## Tech stack
+The debug APK is generated at `app/build/outputs/apk/debug/app-debug.apk`. For device integration checks with an attached emulator or phone:
 
-- Kotlin
-- Jetpack Compose and Material 3
-- Hilt dependency injection
-- Coroutines and StateFlow
-- Android BatteryManager and system battery signals
+```bash
+./gradlew connectedDebugAndroidTest
+```
 
-## Privacy
+The Android package remains `com.abanana.abattery` so this update continues the existing app. Renaming the GitHub project does not change the installed package or Play URL.
 
-ABattery processes battery information on your device. It does not include ads or analytics and does not request Internet access. See the full [privacy policy](PRIVACY.md).
+## Development and contributing
 
-## Contributing
+Built with Kotlin, Jetpack Compose, Material 3, Hilt, coroutines and StateFlow. See the [source architecture](docs/architecture.md), [changelog](CHANGELOG.md) and [contribution guide](CONTRIBUTING.md).
 
-Bug reports, device compatibility findings, translations, documentation, and code contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
-If this project is useful to you, consider starring the repository. It helps other Android users and contributors discover the app.
+Device reports, translations and focused fixes are welcome. Include the model, Android version, app version and steps to reproduce; remove device identifiers and unrelated personal information from screenshots or logs.
 
 ## License
 
-Licensed under the [Apache License 2.0](LICENSE).
+[Apache License 2.0](LICENSE).

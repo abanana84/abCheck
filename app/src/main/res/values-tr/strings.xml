@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pil sağlığı ve döngüler</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">Pil sağlığı</string>
     <string name="section_status">Durum</string>
     <string name="status_charging">Şarj oluyor</string>

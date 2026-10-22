@@ -1,6 +1,21 @@
 # Changelog
 
-All notable changes to ABattery are documented here.
+All notable changes to abCheck are documented here.
+
+## [1.2.0] - Submitted for Google Play review on 2026-10-22
+
+- Renamed the app to abCheck Device & System; Android package remains unchanged.
+- Added an in-app privacy policy link.
+- Updated Play descriptions, screenshots and foreground-service disclosures.
+- Submitted for review, not confirmed publicly available.
+
+- Added the device dashboard and hardware, system, network, apps, camera and sensor tabs.
+- Retained existing battery calculations and added lifecycle-aware sampling.
+- Added interactive device tests, explicit user observations, network tools and optional read-only Shizuku diagnostics.
+- Added local CPU/memory/storage/GPU benchmarks, selected workloads, stress repeats and saved history.
+- Added foreground battery recording, customizable floating diagnostics and home-screen widgets.
+- Added Text/JSON/HTML/PDF/PNG reports, English/Vietnamese diagnostic labels and updated privacy disclosures.
+- Added device integration tests and reference/validation documentation.
 
 ## [1.1.5] - 2026-08-14
 

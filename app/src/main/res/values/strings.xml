@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Battery Health &amp; Cycles</string>
+    <string name="app_name">abCheck Device &amp; System</string>
     <string name="app_bar_title">Battery Health</string>
 
     <string name="section_status">Status</string>

@@ -1,0 +1,3 @@
+Introducing abCheck Device & System, formerly Battery Health & Cycles.
+Device information, hardware tests, live monitors, battery history, widgets, local benchmarks and device reports. Existing battery diagnostics retained.
+Privacy policy is available in the app menu.
