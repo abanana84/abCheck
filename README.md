@@ -10,7 +10,7 @@
 
 abCheck brings device information, hardware tests, live monitoring and battery diagnostics into one open-source Android app. No ads, analytics or account required. Core diagnostics work without root; optional Shizuku tools need a separate setup.
 
-> **Release status - 22 October 2026:** Version 1.2.0 (code 9) has been uploaded to Google Play and submitted for review. The screenshots and features below describe that update and the source on `main`. Play may still deliver the older battery-focused version until the update is approved. Existing GitHub releases 1.1.x are historical ABattery builds.
+> **Available on Google Play:** Version 1.2.0 brings device information, hardware tests and live monitoring to abCheck, alongside the existing battery tools. The screenshots below show 1.2.0. Existing GitHub releases 1.1.x are historical ABattery builds.
 
 [Google Play](https://play.google.com/store/apps/details?id=com.abanana.abattery) · [Report a bug](https://github.com/abanana84/abCheck/issues/new?template=bug.yml) · [Request a feature](https://github.com/abanana84/abCheck/issues/new?template=feature.yml) · [Privacy policy](PRIVACY.md)
 

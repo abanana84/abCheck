@@ -2,12 +2,12 @@
 
 All notable changes to abCheck are documented here.
 
-## [1.2.0] - Submitted for Google Play review on 2026-10-22
+## [1.2.0] - 2026-10-22
 
 - Renamed the app to abCheck Device & System; Android package remains unchanged.
 - Added an in-app privacy policy link.
 - Updated Play descriptions, screenshots and foreground-service disclosures.
-- Submitted for review, not confirmed publicly available.
+- Available on Google Play.
 
 - Added the device dashboard and hardware, system, network, apps, camera and sensor tabs.
 - Retained existing battery calculations and added lifecycle-aware sampling.
