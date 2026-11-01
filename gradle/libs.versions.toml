@@ -1,6 +1,6 @@
 [versions]
 agp = "8.13.2"
-kotlin = "2.0.0"
+kotlin = "2.4.21"
 appcompat = "1.7.0"
 coreKtx = "1.13.1"
 lifecycleRuntime = "2.8.3"
@@ -10,7 +10,7 @@ navigationCompose = "2.7.7"
 hilt = "2.51.1"
 hiltNavigationCompose = "1.2.0"
 datastore = "1.1.1"
-coroutines = "1.8.1"
+coroutines = "1.11.0"
 junit = "4.13.2"
 
 [libraries]
@@ -40,4 +40,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.21" }
+ksp = { id = "com.google.devtools.ksp", version = "2.3.12" }
